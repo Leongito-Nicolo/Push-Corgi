@@ -94,3 +94,11 @@ crashlytics-build.properties
 
 # Mac
 *.DS_Store
+
+#Android
+.gradle/
+local.properties
+*.keystore
+*.jks
+*.keystore.meta
+**/.utmp/
