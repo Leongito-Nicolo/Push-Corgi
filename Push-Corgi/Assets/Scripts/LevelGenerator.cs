@@ -8,6 +8,8 @@ public class LevelGenerator : MonoBehaviour
     //public TypeBlockData blockMappingPrefab;
     //public GameObject sofaBlock;
 
+
+    
     public List<GameObject> prefabBlocks;
     
     public GameObject exitPrefab;
@@ -55,7 +57,7 @@ public class LevelGenerator : MonoBehaviour
 
                         //blocco script da inizializzare
 
-                        
+
                     }
 
                     
