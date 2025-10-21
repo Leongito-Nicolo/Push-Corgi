@@ -13,10 +13,24 @@ public class InputManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(currentPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform.TryGetComponent(out Draggable draggable))
+                Draggable draggable;
+                if (hit.transform.TryGetComponent(out draggable))
                 {
+                    Vector3 offset = hit.point - draggable.transform.position;
                     currentDraggable = draggable;
-                    draggable.StartDrag();
+                    draggable.StartDrag(offset);
+                }
+                else if (hit.transform.parent?.TryGetComponent(out draggable) ?? false) //da levare
+                {
+                    Vector3 offset = hit.point - draggable.transform.position;
+
+                    currentDraggable = draggable;
+                    draggable.StartDrag(offset);
+                }
+
+                if (hit.transform.TryGetComponent(out Collectable collectable))
+                {
+                    collectable.CollectCoin();
                 }
             }
         }
