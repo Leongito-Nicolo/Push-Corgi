@@ -12,8 +12,8 @@
             0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0,
-            1, 0, 0, 0, 0, 0,
-            1, 0, 0, 0, 0, 3
+            4, 0, 0, 0, 0, 0,
+            4, 0, 0, 0, 0, 3
         ],
 
         "data" :
@@ -23,7 +23,7 @@
             "id" : 1,
             "blockName" : "character",
             "dimension" : {"x" : 1, "y" : 2},
-            "direction" : "Orizontal",
+            "direction" : "Vertical",
             "isCharacter" : true
         },
 
