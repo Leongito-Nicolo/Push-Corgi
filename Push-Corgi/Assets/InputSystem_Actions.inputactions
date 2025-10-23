@@ -9,10 +9,10 @@
                 {
                     "name": "Tap",
                     "type": "Button",
-                    "id": "e77be675-8f5d-455a-bf5f-083dda40ddaf",
+                    "id": "2e7d025e-e191-4f41-8ec2-4df527ce8c50",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -28,23 +28,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "38dc894d-4d42-4fae-92dc-e97210c13b94",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Tap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "05b2c6a1-57a5-4cac-bd2e-38479c55daf7",
                     "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "TouchPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2e511ed-f016-477c-a4d2-d3a7b64030af",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

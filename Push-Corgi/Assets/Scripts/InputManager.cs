@@ -1,73 +1,57 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private Vector3 currentPos;
-    private bool isDragging;
-    private Transform toDrag;
-    private bool isClickedOn
-    {
-        get
-        {
-            Ray ray = Camera.main.ScreenPointToRay(currentPos);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.tag == "Player")
-                    toDrag = hit.transform;
-
-                return hit.transform.tag == "Player";
-            }
-            return false;
-        }
-    }
-
-    private Vector3 worldPos
-    {
-        get
-        {
-            float z = Camera.main.ScreenToWorldPoint(transform.position).z;     //cambio
-            return Camera.main.ScreenToWorldPoint(currentPos + new Vector3(0, 0, z));
-        }
-    }
+    private Draggable currentDraggable;
+    private Vector2 currentPos;
 
     public void OnTap(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
-            if (isClickedOn)
+            Ray ray = Camera.main.ScreenPointToRay(currentPos);
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                StartCoroutine(Drag());
+                Draggable draggable;
+                if (hit.transform.TryGetComponent(out draggable))
+                {
+                    Vector3 offset = hit.point - draggable.transform.position;
+                    currentDraggable = draggable;
+                    draggable.StartDrag(offset);
+                }
+                else if (hit.transform.parent?.TryGetComponent(out draggable) ?? false) //da levare
+                {
+                    Vector3 offset = hit.point - draggable.transform.position;
+
+                    currentDraggable = draggable;
+                    draggable.StartDrag(offset);
+                }
+
+                if (hit.transform.TryGetComponent(out Collectable collectable))
+                {
+                    collectable.CollectCoin();
+                }
             }
         }
 
         if (context.canceled)
         {
-            isDragging = false;
+            if (currentDraggable != null)
+            {
+                currentDraggable.StopDrag();
+                currentDraggable = null;
+            }
         }
     }
 
-    public void OnScreenPos(InputAction.CallbackContext context)
+    public void OnPointerPosition(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        currentPos = context.ReadValue<Vector2>();
+
+        if (currentDraggable != null)
         {
-            currentPos = context.ReadValue<Vector2>();
+            currentDraggable.UpdateDragPosition(currentPos);
         }
     }
-
-    private IEnumerator Drag()
-    {
-        isDragging = true;
-        // grab
-        while (isDragging)
-        {
-            // dragging
-            toDrag.position = new Vector3(toDrag.position.x, toDrag.position.y, worldPos.z);
-            yield return null;
-        }
-        // drop
-    }
-
 }
