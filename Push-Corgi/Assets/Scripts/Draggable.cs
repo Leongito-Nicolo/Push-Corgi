@@ -1,4 +1,4 @@
-using UnityEditor;
+using System.Collections;
 using UnityEngine;
 
 public enum Direction
@@ -7,18 +7,68 @@ public enum Direction
     Horizontal
 }
 
+[RequireComponent(typeof(BoxCollider))]
 public class Draggable : MonoBehaviour
 {
     [SerializeField] private Direction direction;
-    private bool isDragging = false;
-    private bool canDrag = true;
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float checkOffset = 0.05f;
+    [SerializeField] private LayerMask obstacleMask;
+
     private Camera mainCamera;
     private float distanceFromCamera;
     private Vector3 offset;
+    private Vector3 dragPos;
+    private bool isDragging;
+
+    private BoxCollider col;
 
     private void Awake()
     {
         mainCamera = Camera.main;
+        col = GetComponent<BoxCollider>();
+    }
+
+    private void Update()
+    {
+        if (!isDragging) return;
+
+        Vector3 currentPos = transform.position;
+        Vector3 targetPos = dragPos;
+        targetPos.y = currentPos.y;
+
+        Vector3 moveDir;
+        float distance;
+
+        if (direction == Direction.Horizontal)
+        {
+            moveDir = Vector3.right * Mathf.Sign(targetPos.x - currentPos.x);
+            distance = Mathf.Abs(targetPos.x - currentPos.x);
+        }
+        else
+        {
+            moveDir = Vector3.forward * Mathf.Sign(targetPos.z - currentPos.z);
+            distance = Mathf.Abs(targetPos.z - currentPos.z);
+        }
+
+        if (distance < 0.01f)
+            return;
+
+        if (Physics.BoxCast(col.bounds.center, col.bounds.extents * 0.9f, moveDir, out RaycastHit hit, Quaternion.identity, distance, obstacleMask))
+        {
+            Vector3 stopPos = currentPos;
+            if (direction == Direction.Horizontal)
+                stopPos.x = hit.point.x - moveDir.x * (col.bounds.extents.x + checkOffset);
+            else
+                stopPos.z = hit.point.z - moveDir.z * (col.bounds.extents.z + checkOffset);
+
+            transform.position = Vector3.Lerp(currentPos, stopPos, Time.deltaTime * moveSpeed);
+        }
+        else
+        {
+            Vector3 newPos = Vector3.Lerp(currentPos, targetPos, Time.deltaTime * moveSpeed);
+            transform.position = newPos;
+        }
     }
 
     public void StartDrag(Vector3 offset)
@@ -30,47 +80,45 @@ public class Draggable : MonoBehaviour
 
     public void StopDrag()
     {
-        offset = Vector2.zero;
         isDragging = false;
-        FindNearestPoint();
+        offset = Vector3.zero;
+        SnapToGrid();
     }
 
     public void UpdateDragPosition(Vector2 screenPos)
     {
         if (!isDragging) return;
-        if (!canDrag) return;
 
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, distanceFromCamera));
+        Vector3 targetPos = transform.position;
+
         if (direction == Direction.Horizontal)
-        {
-            transform.position = new Vector3(worldPos.x - offset.x, transform.position.y, transform.position.z);
-        }
+            targetPos.x = worldPos.x - offset.x;
         else
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, worldPos.z - offset.z);
-        }
+            targetPos.z = worldPos.z - offset.z;
+
+        dragPos = targetPos;
     }
 
-    public void FindNearestPoint()
+    private void SnapToGrid()
     {
+        Vector3 pos = transform.position;
+
         if (direction == Direction.Horizontal)
-        {
-            transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, transform.position.z);
-        }
+            pos.x = Mathf.Round(pos.x);
         else
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Round(transform.position.z));
-        }
+            pos.z = Mathf.Round(pos.z);
+
+        StartCoroutine(SnapRoutine(pos));
     }
 
-    void OnCollisionEnter(Collision collision)
+    private IEnumerator SnapRoutine(Vector3 target)
     {
-        Debug.Log("x");
-        if (collision.transform.tag == "Obstacle")
+        while (Vector3.Distance(transform.position, target) > 0.01f)
         {
-            Debug.Log("a");
-            canDrag = false;
+            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * 15);
+            yield return null;
         }
+        transform.position = target;
     }
-
 }
