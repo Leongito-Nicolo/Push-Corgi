@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_Couch
-  m_Shader: {fileID: -6465566751694194690, guid: 719d30f8417998541b4fab6a7b036445, type: 3}
+  m_Name: Shader Graphs_SH_CouchUNLIT
+  m_Shader: {fileID: -6465566751694194690, guid: b78181e130ba2c5479decac673a0759b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -42,7 +42,6 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
-    - _BlendModePreserveSpecular: 1
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 0
@@ -50,21 +49,19 @@ Material:
     - _Emis: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
     - _Roughness: 0
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _BasePurple: {r: 0.23773581, g: 0.047995716, b: 0.2279217, a: 1}
+    - _BasePurple: {r: 0.2831488, g: 0.05612849, b: 0.2704979, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &866504714157807637
+--- !u!114 &829739300206376433
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
