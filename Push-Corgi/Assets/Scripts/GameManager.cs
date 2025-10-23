@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private int _currentLevel = 1;
     private int _totalLevel;
 
+    
+
     void Awake()
     {
         if (Instance == null)

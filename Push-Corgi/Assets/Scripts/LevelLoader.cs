@@ -8,6 +8,8 @@ public class LevelLoader : MonoBehaviour
 
     public int GlobalLine { get; private set; }
     public int GlobalCol { get; private set; }
+    private LevelData _data;
+    
 
     public void LoadAllLevel()
     {
@@ -59,6 +61,28 @@ public class LevelLoader : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void LoadLevelByName(string name)
+    {
+        LevelData selectedLevel = Array.Find(
+            _levelGlobalContainer.Levels,
+            level => level.levelName.Equals(name, StringComparison.OrdinalIgnoreCase)
+        );
+
+        if (selectedLevel != null)
+    {
+        // Trova le dimensioni globali e chiama la generazione
+        int line = _levelGlobalContainer.line;
+        int col = _levelGlobalContainer.col;
+        
+        // Avvia la generazione del livello
+        GameManager.Instance.levelGenerator.LevelGenerate(selectedLevel, line, col);
+    }
+    else
+    {
+        Debug.LogError($"Livello '{name}' non trovato nei dati JSON.");
+    }
     }
 
 }

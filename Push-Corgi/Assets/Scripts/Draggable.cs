@@ -10,7 +10,7 @@ public enum Direction
 [RequireComponent(typeof(BoxCollider))]
 public class Draggable : MonoBehaviour
 {
-    [SerializeField] private Direction direction;
+    [SerializeField] private Direction direction { get => direction; set { direction = value; } }
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float checkOffset = 0.05f;
     [SerializeField] private LayerMask obstacleMask;
@@ -20,6 +20,8 @@ public class Draggable : MonoBehaviour
     private Vector3 offset;
     private Vector3 dragPos;
     private bool isDragging;
+
+    
 
     private BoxCollider col;
 

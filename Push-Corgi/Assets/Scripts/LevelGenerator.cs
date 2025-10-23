@@ -13,14 +13,32 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> prefabBlocks;
 
     public GameObject exitPrefab;
-    
+
     private float gridScale = 0.75f;
 
+    private List<GameObject> _spawnedObjects = new List<GameObject>();
+
     public void LevelGenerate(LevelData _levelData, int line, int col)
+
     {
-        //SceneClener();
+        SceneCleaner();
         //ExitGenerator(_levelData.principalExit.ToVector2Int());
         BlockGenerator(_levelData, line, col);
+    }
+    
+    public void SceneCleaner()
+    {
+        Debug.Log($"Tentativo di pulizia. Oggetti tracciati: {_spawnedObjects.Count}");
+    
+        foreach (GameObject obj in _spawnedObjects)
+        {
+            if (obj != null)
+            {
+                Destroy(obj); 
+            }
+        }  
+        _spawnedObjects.Clear(); 
+        Debug.Log("Pulizia della scena precedente completata.");
     }
 
     private void BlockGenerator(LevelData _levelData, int line, int col)
@@ -42,7 +60,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 int index = x * col + y;
                 int IDBlock = layout[index];
-
+                
 
                 if (IDBlock > 0 && blockMapDetails.ContainsKey(IDBlock))
                 {
@@ -59,6 +77,7 @@ public class LevelGenerator : MonoBehaviour
                         GameObject prefabToSpawn = prefabBlocks[prefabIndex];
                         GameObject newBlockGo = Instantiate(prefabToSpawn, worldPos, prefabToSpawn.transform.rotation);
 
+                        _spawnedObjects.Add(newBlockGo);
                          
                         //dimensione celle
                         Vector3 scale = new Vector3(
@@ -68,13 +87,13 @@ public class LevelGenerator : MonoBehaviour
                         );
                         newBlockGo.transform.localScale = scale;
 
-                        BlockSetUp(newBlockGo, details);
+                        //BlockSetUp(newBlockGo, details);
 
                         //gestione della direzione di movimento
 
-                        /*Draggable draggable = newBlockGo.GetComponent<Draggable>();
+                        //Draggable draggable = newBlockGo.GetComponent<Draggable>();
 
-                        if (draggable != null)
+                        /*if (draggable != null)
                         {
                             draggable.SetUp(
                                 startPosition,
@@ -95,19 +114,15 @@ public class LevelGenerator : MonoBehaviour
 
     private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col)
     {
-        //int worldLine = GameManager.Instance.levelLoader.GlobalLine;
-        //int worldCol = GameManager.Instance.levelLoader.GlobalCol;
 
         float y_original = gridPos.y;
 
         float x_inverted = col - 1 - gridPos.x;
-        //float y_original = line -1 - gridPos.y;
-
 
         return new Vector3(y_original, 0.75f, x_inverted);
     }
     
-    public void BlockSetUp(GameObject newBlockGo, BlockDettails dettails)
+    /*public void BlockSetUp(GameObject newBlockGo, BlockDettails dettails)
     {
         //gestione della direzione di movimento
 
@@ -117,5 +132,7 @@ public class LevelGenerator : MonoBehaviour
             return;
 
         draggable.Direction = dettails.direction;
-    }
+    }*/
+
+    
 }
