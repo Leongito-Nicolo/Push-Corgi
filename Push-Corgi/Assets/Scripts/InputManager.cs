@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
     {
         if (context.started)
         {
+            if (GameManager.Instance.hasWon) return;
+
             Ray ray = Camera.main.ScreenPointToRay(currentPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {

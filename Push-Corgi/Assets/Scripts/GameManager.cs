@@ -5,11 +5,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public LevelLoader levelLoader;
     public LevelGenerator levelGenerator;
+    public bool hasWon = false;
+    public int movesCounter = 0;
 
     private int _currentLevel = 1;
     private int _totalLevel;
 
-    
+
 
     void Awake()
     {
@@ -17,7 +19,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-        
+
         else
         {
             Destroy(gameObject);
@@ -35,6 +37,16 @@ public class GameManager : MonoBehaviour
         _totalLevel = levelLoader.GetGlobalLevel();
 
         LoadLevel(_currentLevel);
+    }
+
+    void Update()
+    {
+        if (hasWon)
+        {
+            GameUIManager.Instance.HasWon();
+        }
+
+        GameUIManager.Instance.UpdateMoves();
     }
 
     public void LoadLevel(int levelNumber)
@@ -60,5 +72,5 @@ public class GameManager : MonoBehaviour
 
         _currentLevel = levelNumber;
     }
-    
+
 }

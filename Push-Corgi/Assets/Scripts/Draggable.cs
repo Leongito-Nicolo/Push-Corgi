@@ -10,7 +10,7 @@ public enum Direction
 [RequireComponent(typeof(BoxCollider))]
 public class Draggable : MonoBehaviour
 {
-    [SerializeField] private Direction direction { get => direction; set { direction = value; } }
+    [SerializeField] private Direction direction;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float checkOffset = 0.05f;
     [SerializeField] private LayerMask obstacleMask;
@@ -21,7 +21,7 @@ public class Draggable : MonoBehaviour
     private Vector3 dragPos;
     private bool isDragging;
 
-    
+
 
     private BoxCollider col;
 
@@ -44,11 +44,13 @@ public class Draggable : MonoBehaviour
 
         if (direction == Direction.Horizontal)
         {
+            targetPos.z = currentPos.z;
             moveDir = Vector3.right * Mathf.Sign(targetPos.x - currentPos.x);
             distance = Mathf.Abs(targetPos.x - currentPos.x);
         }
         else
         {
+            targetPos.x = currentPos.x;
             moveDir = Vector3.forward * Mathf.Sign(targetPos.z - currentPos.z);
             distance = Mathf.Abs(targetPos.z - currentPos.z);
         }
@@ -82,6 +84,7 @@ public class Draggable : MonoBehaviour
 
     public void StopDrag()
     {
+        GameManager.Instance.movesCounter++;
         isDragging = false;
         offset = Vector3.zero;
         SnapToGrid();
