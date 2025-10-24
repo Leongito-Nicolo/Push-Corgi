@@ -13,12 +13,12 @@ public class MainMenuUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (GameManager.Instance == null || GameManager.Instance.levelLoader == null)
+        if (GameManager.Instance == null || LevelLoader.Instance == null)
         {
             Debug.LogError("GameManager o LevelLoader non inizializzati. Controlla l'ordine di esecuzione.");
             return;
         }
-        LevelData[] levels = GameManager.Instance.levelLoader.AllLevels;
+        LevelData[] levels = LevelLoader.Instance.AllLevels;
 
         if (levels != null && levels.Length > 0)
         {
@@ -34,7 +34,7 @@ public class MainMenuUI : MonoBehaviour
     // Update is called once per frame
     private void GenerateLevelButtons(LevelData[] levels)
     {
-        foreach(LevelData level in levels)
+        foreach (LevelData level in levels)
         {
             GameObject buttonGO = Instantiate(levelBottonPrefab, currentParent);
 
@@ -57,14 +57,14 @@ public class MainMenuUI : MonoBehaviour
 
             levelChanger.levelName = level.levelName;
             levelChanger.levelsPanel = levelsPanelToClose;
-            
+
             Button button = buttonGO.GetComponent<Button>();
             if (button != null)
             {
                 // Collega la funzione OnLevelSelected con il listener standard
-                button.onClick.AddListener(levelChanger.OnLevelSelected); 
+                button.onClick.AddListener(levelChanger.OnLevelSelected);
             }
         }
-        
+
     }
 }

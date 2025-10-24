@@ -24,7 +24,7 @@ public class ChangeLevel : MonoBehaviour
             Debug.Log($"Il nome del livello non è stato impostato sul pulsante '{gameObject.name}'.");
             return;
         }
-        
+
         if (levelsPanel != null)
         {
             levelsPanel.SetActive(false);
@@ -37,19 +37,19 @@ public class ChangeLevel : MonoBehaviour
         if (GameManager.Instance == null)
         {
             Debug.LogError("Errore ChangeLevel: GameManager.Instance è NULL. Controlla l'inizializzazione del Singleton.");
-            return; 
+            return;
         }
-    
+
         // Verifica 2: LevelLoader (L'oggetto che è NULL alla riga 25)
-        if (GameManager.Instance.levelLoader == null) 
+        if (LevelLoader.Instance == null)
         {
             Debug.LogError("Errore ChangeLevel: GameManager.LevelLoader è NULL. Assegnalo nell'Inspector!");
             return;
         }
 
-        GameManager.Instance.levelLoader.LoadLevelByName(levelName);
+        LevelLoader.Instance.LoadLevelByName(levelName);
     }
-    
+
     public void OnDestroy()
     {
         if (button != null)
@@ -57,5 +57,5 @@ public class ChangeLevel : MonoBehaviour
             button.onClick.RemoveListener(OnLevelSelected);
         }
     }
-    
+
 }

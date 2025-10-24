@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.Android.Gradle;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -9,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
     //public GameObject sofaBlock;
 
 
-    
+
     public List<GameObject> prefabBlocks;
 
     public GameObject exitPrefab;
@@ -18,6 +17,21 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> _spawnedObjects = new List<GameObject>();
 
+    public static LevelGenerator Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+
     public void LevelGenerate(LevelData _levelData, int line, int col)
 
     {
@@ -25,19 +39,19 @@ public class LevelGenerator : MonoBehaviour
         //ExitGenerator(_levelData.principalExit.ToVector2Int());
         BlockGenerator(_levelData, line, col);
     }
-    
+
     public void SceneCleaner()
     {
         Debug.Log($"Tentativo di pulizia. Oggetti tracciati: {_spawnedObjects.Count}");
-    
+
         foreach (GameObject obj in _spawnedObjects)
         {
             if (obj != null)
             {
-                Destroy(obj); 
+                Destroy(obj);
             }
-        }  
-        _spawnedObjects.Clear(); 
+        }
+        _spawnedObjects.Clear();
         Debug.Log("Pulizia della scena precedente completata.");
     }
 
@@ -60,14 +74,14 @@ public class LevelGenerator : MonoBehaviour
             {
                 int index = x * col + y;
                 int IDBlock = layout[index];
-                
+
 
                 if (IDBlock > 0 && blockMapDetails.ContainsKey(IDBlock))
                 {
                     BlockDettails details = blockMapDetails[IDBlock];
 
                     Vector2Int startPosition = new Vector2Int(x, y);
-                    
+
                     Vector3 worldPos = GridToWorldPosition(startPosition, line, col);
 
                     int prefabIndex = IDBlock - 1;
@@ -78,7 +92,7 @@ public class LevelGenerator : MonoBehaviour
                         GameObject newBlockGo = Instantiate(prefabToSpawn, worldPos, prefabToSpawn.transform.rotation);
 
                         _spawnedObjects.Add(newBlockGo);
-                         
+
                         //dimensione celle
                         Vector3 scale = new Vector3(
                             details.dimension.x * gridScale,
@@ -102,14 +116,14 @@ public class LevelGenerator : MonoBehaviour
 
                             );
                         }*/
-    
+
                     }
 
 
                 }
             }
         }
-        
+
     }
 
     private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col)
@@ -121,7 +135,7 @@ public class LevelGenerator : MonoBehaviour
 
         return new Vector3(y_original, 0.75f, x_inverted);
     }
-    
+
     /*public void BlockSetUp(GameObject newBlockGo, BlockDettails dettails)
     {
         //gestione della direzione di movimento
@@ -134,5 +148,5 @@ public class LevelGenerator : MonoBehaviour
         draggable.Direction = dettails.direction;
     }*/
 
-    
+
 }

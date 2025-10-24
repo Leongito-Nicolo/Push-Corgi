@@ -9,8 +9,23 @@ public class LevelLoader : MonoBehaviour
     public int GlobalLine { get; private set; }
     public int GlobalCol { get; private set; }
     private LevelData _data;
-    
+
     public LevelData[] AllLevels => _levelGlobalContainer?.Levels;
+
+    public static LevelLoader Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
 
     public void LoadAllLevel()
     {
@@ -72,18 +87,18 @@ public class LevelLoader : MonoBehaviour
         );
 
         if (selectedLevel != null)
-    {
-        // Trova le dimensioni globali e chiama la generazione
-        int line = _levelGlobalContainer.line;
-        int col = _levelGlobalContainer.col;
-        
-        // Avvia la generazione del livello
-        GameManager.Instance.levelGenerator.LevelGenerate(selectedLevel, line, col);
-    }
-    else
-    {
-        Debug.LogError($"Livello '{name}' non trovato nei dati JSON.");
-    }
+        {
+            // Trova le dimensioni globali e chiama la generazione
+            int line = _levelGlobalContainer.line;
+            int col = _levelGlobalContainer.col;
+
+            // Avvia la generazione del livello
+            LevelGenerator.Instance.LevelGenerate(selectedLevel, line, col);
+        }
+        else
+        {
+            Debug.LogError($"Livello '{name}' non trovato nei dati JSON.");
+        }
     }
 
 }

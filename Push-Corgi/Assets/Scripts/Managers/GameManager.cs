@@ -3,8 +3,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public LevelLoader levelLoader;
-    public LevelGenerator levelGenerator;
     public bool hasWon = false;
     public int movesCounter = 0;
 
@@ -27,14 +25,14 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if (levelLoader == null)
+        if (LevelLoader.Instance == null)
         {
             Debug.LogError("il level loader non è assegnato correttamente nel GameManager!");
             return;
         }
 
-        levelLoader.LoadAllLevel();
-        _totalLevel = levelLoader.GetGlobalLevel();
+        LevelLoader.Instance.LoadAllLevel();
+        _totalLevel = LevelLoader.Instance.GetGlobalLevel();
 
         LoadLevel(_currentLevel);
     }
@@ -57,16 +55,16 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        LevelData levelData = levelLoader.GetPushLevelData(levelNumber);
+        LevelData levelData = LevelLoader.Instance.GetPushLevelData(levelNumber);
 
-        if (levelData != null && levelGenerator != null)
+        if (levelData != null && LevelGenerator.Instance != null)
         {
             Debug.Log($"Caricamento livello {levelNumber} : {levelData.levelName}");
 
-            levelGenerator.LevelGenerate(
+            LevelGenerator.Instance.LevelGenerate(
                 levelData,
-                levelLoader.GlobalLine,
-                levelLoader.GlobalCol
+                LevelLoader.Instance.GlobalLine,
+                LevelLoader.Instance.GlobalCol
             );
         }
 
