@@ -7,10 +7,17 @@ public enum Direction
     Horizontal
 }
 
+public enum Size
+{
+    Even,
+    Odd
+}
+
 [RequireComponent(typeof(BoxCollider))]
 public class Draggable : MonoBehaviour
 {
     [SerializeField] private Direction direction;
+    [SerializeField] private Size size;
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float checkOffset = 0.05f;
     [SerializeField] private LayerMask obstacleMask;
@@ -109,10 +116,20 @@ public class Draggable : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (direction == Direction.Horizontal)
-            pos.x = Mathf.Round(pos.x);
+        if (size == Size.Even)
+        {
+            if (direction == Direction.Horizontal)
+                pos.x = Mathf.Round(pos.x);
+            else
+                pos.z = Mathf.Round(pos.z);
+        }
         else
-            pos.z = Mathf.Round(pos.z);
+        {
+            if (direction == Direction.Horizontal)
+                pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
+            else
+                pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
+        }
 
         StartCoroutine(SnapRoutine(pos));
     }
