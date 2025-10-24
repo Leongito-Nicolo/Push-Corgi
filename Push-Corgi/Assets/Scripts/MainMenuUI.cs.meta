@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 5813d11181d7c1b4495ae0fcd5ea972d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - levelBottonPrefab: {fileID: 5031971249908990652, guid: 375f875e51392134e8dcb663247af109, type: 3}
+  - currentParent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

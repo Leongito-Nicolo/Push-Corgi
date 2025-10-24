@@ -10,6 +10,7 @@ public class LevelLoader : MonoBehaviour
     public int GlobalCol { get; private set; }
     private LevelData _data;
     
+    public LevelData[] AllLevels => _levelGlobalContainer?.Levels;
 
     public void LoadAllLevel()
     {
