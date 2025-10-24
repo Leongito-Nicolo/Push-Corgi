@@ -36,5 +36,10 @@ public class GameUIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
 }
