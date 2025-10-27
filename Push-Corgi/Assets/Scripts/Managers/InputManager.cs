@@ -22,13 +22,6 @@ public class InputManager : MonoBehaviour
                     currentDraggable = draggable;
                     draggable.StartDrag(offset);
                 }
-                else if (hit.transform.parent?.TryGetComponent(out draggable) ?? false) //da levare
-                {
-                    Vector3 offset = hit.point - draggable.transform.position;
-
-                    currentDraggable = draggable;
-                    draggable.StartDrag(offset);
-                }
 
                 if (hit.transform.TryGetComponent(out Collectable collectable))
                 {

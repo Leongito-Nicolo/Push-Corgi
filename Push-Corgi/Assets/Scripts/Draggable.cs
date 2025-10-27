@@ -27,10 +27,13 @@ public class Draggable : MonoBehaviour
     private Vector3 offset;
     private Vector3 dragPos;
     private bool isDragging;
+    private Vector3 oldPosition;
+    private Vector3 newPosition;
 
 
 
     private BoxCollider col;
+    public bool isSnapping;
 
     private void Awake()
     {
@@ -85,13 +88,13 @@ public class Draggable : MonoBehaviour
     public void StartDrag(Vector3 offset)
     {
         isDragging = true;
+        oldPosition = transform.position;
         distanceFromCamera = Vector3.Distance(mainCamera.transform.position, transform.position);
         this.offset = offset;
     }
 
     public void StopDrag()
     {
-        GameManager.Instance.movesCounter++;
         isDragging = false;
         offset = Vector3.zero;
         SnapToGrid();
@@ -114,33 +117,41 @@ public class Draggable : MonoBehaviour
 
     private void SnapToGrid()
     {
-        Vector3 pos = transform.position;
+        newPosition = transform.position;
 
         if (size == Size.Even)
         {
             if (direction == Direction.Horizontal)
-                pos.x = Mathf.Round(pos.x);
+                newPosition.x = Mathf.Round(newPosition.x);
             else
-                pos.z = Mathf.Round(pos.z);
+                newPosition.z = Mathf.Round(newPosition.z);
         }
         else
         {
             if (direction == Direction.Horizontal)
-                pos.x = Mathf.Round(pos.x - 0.5f) + 0.5f;
+                newPosition.x = Mathf.Round(newPosition.x - 0.5f) + 0.5f;
             else
-                pos.z = Mathf.Round(pos.z - 0.5f) + 0.5f;
+                newPosition.z = Mathf.Round(newPosition.z - 0.5f) + 0.5f;
         }
 
-        StartCoroutine(SnapRoutine(pos));
+        if (newPosition != oldPosition)
+        {
+            GameManager.Instance.movesCounter++;
+            GameManager.Instance.moves.Add(new Moves(this, oldPosition));
+        }
+
+        StartCoroutine(SnapRoutine(newPosition));
     }
 
-    private IEnumerator SnapRoutine(Vector3 target)
+    public IEnumerator SnapRoutine(Vector3 target)
     {
+        isSnapping = true;
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * 15);
             yield return null;
         }
         transform.position = target;
+        isSnapping = false;
     }
 }
