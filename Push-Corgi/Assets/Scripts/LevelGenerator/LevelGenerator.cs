@@ -56,7 +56,7 @@ public class LevelGenerator : MonoBehaviour
         Debug.Log("Pulizia della scena precedente completata.");
     }
 
-    private void BlockGenerator(LevelData _levelData, int line, int col)
+    public void BlockGenerator(LevelData _levelData, int line, int col)
     {
         float halfGridScale = gridScale / 2f;
 

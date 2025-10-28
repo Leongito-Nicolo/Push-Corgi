@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private TMP_Text _movesText;
     [SerializeField] private TMP_Text _gameMovesText;
-    private void Awake()
+
+    public Button button;
+
+
+      private void Awake()
     {
         if (Instance == null)
         {
@@ -33,7 +38,32 @@ public class GameUIManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (LevelLoader.Instance == null)
+        {
+            Debug.LogError("Restart fallito: LevelLoader.Instance è NULL.");
+            return;
+        }
+
+        string levelToRestart = LevelLoader.Instance.CurrentLevelName;
+
+        if (!string.IsNullOrEmpty(levelToRestart))
+        {
+            Debug.Log($"Riavvio del livello: {levelToRestart}");
+            LevelLoader.Instance.LoadLevelByName(levelToRestart);
+        }
+        else
+        {
+            Debug.LogWarning("Nessun livello è stato caricato in precedenza. Impossibile riavviare.");
+        }
+
+    }
+    
+    void OnDestroy()
+    {
+        if (button != null)
+        {
+            button.onClick.RemoveListener(Restart);
+        }
     }
 
     public void Menu()

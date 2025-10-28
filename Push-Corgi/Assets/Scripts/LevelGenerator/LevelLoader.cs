@@ -13,6 +13,8 @@ public class LevelLoader : MonoBehaviour
     public LevelData[] AllLevels => _levelGlobalContainer?.Levels;
 
     public static LevelLoader Instance { get; private set; }
+
+    public string CurrentLevelName { get; private set; }
     private void Awake()
     {
         if (Instance == null)
@@ -24,8 +26,6 @@ public class LevelLoader : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
 
     public void LoadAllLevel()
     {
@@ -88,6 +88,7 @@ public class LevelLoader : MonoBehaviour
 
         if (selectedLevel != null)
         {
+            CurrentLevelName = name;
             // Trova le dimensioni globali e chiama la generazione
             int line = _levelGlobalContainer.line;
             int col = _levelGlobalContainer.col;
