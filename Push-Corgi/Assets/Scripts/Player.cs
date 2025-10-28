@@ -9,24 +9,10 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Win"))
         {
-            movement = StartCoroutine(Move());
+            Draggable drag = transform.GetComponent<Draggable>();
+            //StopAllCoroutines();
+            StartCoroutine(drag.SnapRoutine(Vector3.right * 12f));
             GameManager.Instance.hasWon = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Win"))
-        {
-            StopCoroutine(movement);
-        }
-    }
-    public IEnumerator Move()
-    {
-        while (true)
-        {
-            // transform.position += Vector3.right * Time.deltaTime;
-            yield return null;
         }
     }
 }
