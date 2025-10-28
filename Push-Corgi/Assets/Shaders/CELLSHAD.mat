@@ -55,13 +55,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Max: 1
-    - _Min: -0.23
+    - _Max: 1.9
+    - _Min: 1.02
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Shades: 0.26
+    - _Shades: 0.84
     - _XRMotionVectorsPass: 1
     m_Colors:
-    - _Color: {r: 0.783538, g: 0.3813261, b: 0.783538, a: 1}
+    - _Color: {r: 0.6377357, g: 0.07099317, b: 0.6377357, a: 1}
+    - _Color2: {r: 0.7129449, g: 0.21394795, b: 0.7509433, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
