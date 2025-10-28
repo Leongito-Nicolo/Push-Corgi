@@ -1,10 +1,17 @@
-using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> skins;
     private float velocity = 9f;
+
+    void Awake()
+    {
+        int skinIndex = PlayerPrefs.GetInt("skinSelected");
+        skins[skinIndex].gameObject.SetActive(true);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Win"))

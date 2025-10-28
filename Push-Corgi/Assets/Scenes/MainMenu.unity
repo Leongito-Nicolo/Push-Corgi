@@ -1366,7 +1366,7 @@ GameObject:
   - component: {fileID: 707142000}
   - component: {fileID: 707141999}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Previous Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,7 +1434,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 707142000}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1045034535}
+        m_TargetAssemblyTypeName: SkinUIManager, Assembly-CSharp
+        m_MethodName: PreviousOrNextSkin
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &707142000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1559,6 +1571,7 @@ GameObject:
   - component: {fileID: 1045034532}
   - component: {fileID: 1045034534}
   - component: {fileID: 1045034533}
+  - component: {fileID: 1045034535}
   m_Layer: 5
   m_Name: Skins
   m_TagString: Untagged
@@ -1625,6 +1638,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045034531}
   m_CullTransparentMesh: 1
+--- !u!114 &1045034535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045034531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcf6a1fa35a1014096bc067078c75bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkinUIManager
+  skins:
+  - {fileID: 1370964014}
+  - {fileID: 1370964014}
+  - {fileID: 1370964014}
+  - {fileID: 1370964014}
+  - {fileID: 1370964014}
+  skinCounter: {fileID: 703334974}
 --- !u!1 &1128384941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,7 +2440,7 @@ GameObject:
   - component: {fileID: 1370964017}
   - component: {fileID: 1370964016}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Next Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2476,7 +2508,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1370964017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1045034535}
+        m_TargetAssemblyTypeName: SkinUIManager, Assembly-CSharp
+        m_MethodName: PreviousOrNextSkin
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1370964017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3476,7 +3520,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2044975458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1045034535}
+        m_TargetAssemblyTypeName: SkinUIManager, Assembly-CSharp
+        m_MethodName: SelectSkin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1045034531}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2044975458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3654,7 +3722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2078677608
 RectTransform:
   m_ObjectHideFlags: 0
