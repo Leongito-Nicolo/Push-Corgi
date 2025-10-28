@@ -365,6 +365,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 8
+  isSnapping: 0
 --- !u!65 &628472858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -584,6 +585,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 8
+  isSnapping: 0
 --- !u!65 &1523210895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -641,11 +643,6 @@ Transform:
   - {fileID: 1834506218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1636324504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8899786441891679766, guid: 94578e286b851a541b7ea66c0a6b1c61, type: 3}
-  m_PrefabInstance: {fileID: 2999733899792999536}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1657641475
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,11 +894,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1733468644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4579109431727794026, guid: 13759bb07e50a7f43ae18fa4dd153e3c, type: 3}
-  m_PrefabInstance: {fileID: 1781738907813522742}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1800016404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,23 +1997,23 @@ PrefabInstance:
     - target: {fileID: 7594043598690129923, guid: 728603c830309cd4e97c0b1819492097, type: 3}
       propertyPath: 'prefabBlocks.Array.data[0]'
       value: 
-      objectReference: {fileID: 7961584556886206004, guid: 470a26a33a103ec4abc1d82461f25715, type: 3}
+      objectReference: {fileID: 2062494045494614315, guid: 75fce2ecb77df8547bd1746549c340cc, type: 3}
     - target: {fileID: 7594043598690129923, guid: 728603c830309cd4e97c0b1819492097, type: 3}
       propertyPath: 'prefabBlocks.Array.data[1]'
       value: 
-      objectReference: {fileID: 1733468644}
+      objectReference: {fileID: 4335568921905320692, guid: e6c20c29caa83cc4cb6b786922b016d7, type: 3}
     - target: {fileID: 7594043598690129923, guid: 728603c830309cd4e97c0b1819492097, type: 3}
       propertyPath: 'prefabBlocks.Array.data[2]'
       value: 
-      objectReference: {fileID: 1523210893}
+      objectReference: {fileID: 371173510416041938, guid: e631ac76136e2174c9a241e284476629, type: 3}
     - target: {fileID: 7594043598690129923, guid: 728603c830309cd4e97c0b1819492097, type: 3}
       propertyPath: 'prefabBlocks.Array.data[3]'
       value: 
-      objectReference: {fileID: 1636324504}
+      objectReference: {fileID: 4941921987011106695, guid: f54fb92b6faf80d44ae65e700918848f, type: 3}
     - target: {fileID: 7594043598690129923, guid: 728603c830309cd4e97c0b1819492097, type: 3}
       propertyPath: 'prefabBlocks.Array.data[4]'
       value: 
-      objectReference: {fileID: 3096447591324601375, guid: 62dec24b7f003c54abe4ddcb0e1807e7, type: 3}
+      objectReference: {fileID: 2629624757414643447, guid: d734cc20437b2654e99f1013b2168051, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

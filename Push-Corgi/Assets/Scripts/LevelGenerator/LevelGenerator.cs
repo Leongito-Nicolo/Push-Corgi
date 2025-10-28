@@ -111,17 +111,13 @@ public class LevelGenerator : MonoBehaviour
 
                     }
 
-
                 }
             }
         }
-
     }
 
     private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col, Direction courrentDirection)
     {
-        
-        
 
         float halfGridScale = gridScale / 2f;
 
@@ -134,8 +130,8 @@ public class LevelGenerator : MonoBehaviour
 
         if (courrentDirection == Direction.Horizontal)
         {
-            finalX = y_original * gridScale;
-            finalZ = x_inverted * gridScale + halfGridScale;
+            finalX = y_original * gridScale + halfGridScale;
+            finalZ = x_inverted * gridScale;
         }
 
         else if (courrentDirection == Direction.Vertical)
@@ -143,7 +139,6 @@ public class LevelGenerator : MonoBehaviour
             finalX = y_original * gridScale + halfGridScale;
             finalZ = x_inverted * gridScale;
         }
-
         
         //float finalX = y_original * gridScale + halfGridScale;
         //float finalZ = x_inverted * gridScale + halfGridScale;
