@@ -19,7 +19,7 @@ public class Draggable : MonoBehaviour
     [SerializeField] private Direction direction;
     [SerializeField] private Size size;
     [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float checkOffset = 0.05f;
+    [SerializeField] private float checkOffset = 0.01f;
     [SerializeField] private LayerMask obstacleMask;
 
     private Camera mainCamera;
@@ -103,6 +103,7 @@ public class Draggable : MonoBehaviour
     public void UpdateDragPosition(Vector2 screenPos)
     {
         if (!isDragging) return;
+        if (GameManager.Instance.hasWon) return;
 
         Vector3 worldPos = mainCamera.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, distanceFromCamera));
         Vector3 targetPos = transform.position;
@@ -137,7 +138,7 @@ public class Draggable : MonoBehaviour
         if (newPosition != oldPosition)
         {
             GameManager.Instance.movesCounter++;
-            GameManager.Instance.moves.Add(new Moves(this, oldPosition));
+            GameManager.Instance.moves.Push(new Move(this, oldPosition));
         }
 
         StartCoroutine(SnapRoutine(newPosition));
