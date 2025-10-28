@@ -3,21 +3,20 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    //[Header("riferimenti prefab")]
-    //public TypeBlockData blockMappingPrefab;
-    //public GameObject sofaBlock;
-
-
 
     public List<GameObject> prefabBlocks;
 
+    public GameObject gridPrefab;
+
     public GameObject exitPrefab;
 
-    private float gridScale = 0.75f;
+    private float gridScale = 1f;
 
     private List<GameObject> _spawnedObjects = new List<GameObject>();
 
     public static LevelGenerator Instance { get; private set; }
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -38,6 +37,8 @@ public class LevelGenerator : MonoBehaviour
         SceneCleaner();
         //ExitGenerator(_levelData.principalExit.ToVector2Int());
         BlockGenerator(_levelData, line, col);
+
+        GridGenerator(line, col);
     }
 
     public void SceneCleaner()
@@ -57,6 +58,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void BlockGenerator(LevelData _levelData, int line, int col)
     {
+        float halfGridScale = gridScale / 2f;
+
         int[] layout = _levelData.layoutData;
 
         Dictionary<int, BlockDettails> blockMapDetails = new Dictionary<int, BlockDettails>();
@@ -64,7 +67,6 @@ public class LevelGenerator : MonoBehaviour
         foreach (var details in _levelData.data)
         {
             blockMapDetails.Add(details.id, details);
-
         }
 
         //lettura del file JSON colonna per riga
@@ -80,42 +82,32 @@ public class LevelGenerator : MonoBehaviour
                 {
                     BlockDettails details = blockMapDetails[IDBlock];
 
+                    Direction courrentDirection;
+
+                    if (details.dimension.x > details.dimension.y)
+                    {
+                        courrentDirection = Direction.Horizontal;
+                    }
+                    else
+                    {
+                        courrentDirection = Direction.Vertical;
+                    }
+
                     Vector2Int startPosition = new Vector2Int(x, y);
 
-                    Vector3 worldPos = GridToWorldPosition(startPosition, line, col);
+                    Vector3 worldPos = GridToWorldPosition(startPosition, line, col, courrentDirection);
 
                     int prefabIndex = IDBlock - 1;
+
+
 
                     if (prefabIndex >= 0 && prefabIndex < prefabBlocks.Count)
                     {
                         GameObject prefabToSpawn = prefabBlocks[prefabIndex];
+
                         GameObject newBlockGo = Instantiate(prefabToSpawn, worldPos, prefabToSpawn.transform.rotation);
 
                         _spawnedObjects.Add(newBlockGo);
-
-                        //dimensione celle
-                        Vector3 scale = new Vector3(
-                            details.dimension.x * gridScale,
-                            1f,
-                            details.dimension.y * gridScale
-                        );
-                        newBlockGo.transform.localScale = scale;
-
-                        //BlockSetUp(newBlockGo, details);
-
-                        //gestione della direzione di movimento
-
-                        //Draggable draggable = newBlockGo.GetComponent<Draggable>();
-
-                        /*if (draggable != null)
-                        {
-                            draggable.SetUp(
-                                startPosition,
-
-
-
-                            );
-                        }*/
 
                     }
 
@@ -126,27 +118,61 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
-    private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col)
+    private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col, Direction courrentDirection)
     {
+        
+        
+
+        float halfGridScale = gridScale / 2f;
 
         float y_original = gridPos.y;
-
         float x_inverted = col - 1 - gridPos.x;
 
-        return new Vector3(y_original, 0.75f, x_inverted);
+        float finalX = 0f;
+        float finalZ = 0f;
+
+
+        if (courrentDirection == Direction.Horizontal)
+        {
+            finalX = y_original * gridScale;
+            finalZ = x_inverted * gridScale + halfGridScale;
+        }
+
+        else if (courrentDirection == Direction.Vertical)
+        {
+            finalX = y_original * gridScale + halfGridScale;
+            finalZ = x_inverted * gridScale;
+        }
+
+        
+        //float finalX = y_original * gridScale + halfGridScale;
+        //float finalZ = x_inverted * gridScale + halfGridScale;
+
+        return new Vector3(finalX, 0, finalZ);
     }
 
-    /*public void BlockSetUp(GameObject newBlockGo, BlockDettails dettails)
+    public void GridGenerator(int line, int col)
     {
-        //gestione della direzione di movimento
 
-        Draggable draggable = newBlockGo.GetComponent<Draggable>();
-
-        if (draggable == null)
+        if (gridPrefab == null)
+        {
+            Debug.LogWarning("Il prefab della griglia non è assegnato. (campo 'Grid Prefab').");
             return;
+        }
 
-        draggable.Direction = dettails.direction;
-    }*/
+        float halfWidth = (col - 1) * gridScale / 2f;
+        float halfDepth = (line - 1) * gridScale / 2f;
+
+        Vector3 spawnPosition = new Vector3(
+            halfDepth,
+            0,
+            halfWidth
+        );
+
+        GameObject gridGO = Instantiate(gridPrefab, spawnPosition, gridPrefab.transform.rotation);
+
+        _spawnedObjects.Add(gridGO);
+    }
 
 
 }

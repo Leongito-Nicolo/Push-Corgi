@@ -1,19 +1,21 @@
 {
     "line" : 6,
     "col" : 6,
-    "extit" : {"x" : 2, "y" : 1},
+    "exit" : {"x" : 2, "y" : 1},
     "Levels" : [
     {
-        "levelName" : "consolato",
+        "levelName" : "Level1",
+        "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
         "MinMoveCounter" : 0,
+        "showGrid" : true,
         "layoutData" : [
-            1, 0, 0, 0, 0, 1,
+            0, 0, 5, 5, 0, 0,
             0, 0, 0, 0, 0, 0,
+            1, 0, 0, 0, 0, 5,
             0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0,
-            4, 0, 0, 0, 0, 0,
-            4, 0, 0, 0, 0, 3
+            0, 4, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0
         ],
 
         "data" :
@@ -23,7 +25,7 @@
             "id" : 1,
             "blockName" : "character",
             "dimension" : {"x" : 1, "y" : 2},
-            "direction" : "Vertical",
+            "direction" : "Orizontal",
             "isCharacter" : true
         },
 
@@ -60,16 +62,18 @@
         }]
     },
     {
-        "levelName" : "ernesto",
+        "levelName" : "Level2",
+        "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
         "MinMoveCounter" : 0,
+        "showGrid" : true,
         "layoutData" : [
+            0, 0, 0, 0, 5, 0,
+            0, 0, 0, 5, 0, 5,
+            4, 1, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 3, 0,
             0, 0, 0, 0, 0, 0,
-            0, 0, 2, 0, 0, 0,
-            0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 1, 0
+            0, 0, 0, 0, 0, 0
         ],
 
         "data" :
@@ -87,7 +91,7 @@
             "id" : 2,
             "blockName" : "orizontalSofa2x1",
             "dimension" : {"x" : 1, "y" : 2},
-            "direction" : "Orizontal",
+            "direction" : "Vertical",
             "isCharacter" : false
         },
 
@@ -95,7 +99,7 @@
             "id" : 3,
             "blockName" : "orizontalSofa3x1",
             "dimension" : {"x" : 1, "y" : 3},
-            "direction" : "Orizontal",
+            "direction" : "Vertical",
             "isCharacter" : false
         },
 
@@ -103,7 +107,7 @@
             "id" : 4,
             "blockName" : "orizontalSofa1x2",
             "dimension" : {"x" : 2, "y" : 1},
-            "direction" : "Vertical",
+            "direction" : "Orizontal",
             "isCharacter" : false
         },
 
@@ -111,7 +115,123 @@
             "id" : 5,
             "blockName" : "orizontalSofa1x3",
             "dimension" : {"x" : 3, "y" : 1},
+            "direction" : "Orizontal",
+            "isCharacter" : false
+        }]
+    },
+    {
+        "levelName" : "Level3",
+        "levelNumber" : 1,
+        "principalExit" : {"x" : 1, "y" : 2},
+        "MinMoveCounter" : 0,
+        "showGrid" : true,
+        "layoutData" : [
+            0, 0, 5, 0, 0, 0,
+            0, 0, 0, 0, 0, 5,
+            1, 0, 0, 4, 5, 0,
+            0, 0, 0, 0, 0, 0,
+            0, 0, 0, 4, 0, 0,
+            0, 0, 0, 0, 0, 0
+        ],
+
+        "data" :
+
+        [
+            {
+            "id" : 1,
+            "blockName" : "character",
+            "dimension" : {"x" : 1, "y" : 2},
             "direction" : "Vertical",
+            "isCharacter" : true
+        },
+
+        {
+            "id" : 2,
+            "blockName" : "orizontalSofa2x1",
+            "dimension" : {"x" : 1, "y" : 2},
+            "direction" : "Vertical",
+            "isCharacter" : false
+        },
+
+        {
+            "id" : 3,
+            "blockName" : "orizontalSofa3x1",
+            "dimension" : {"x" : 1, "y" : 3},
+            "direction" : "Vertical",
+            "isCharacter" : false
+        },
+
+        {
+            "id" : 4,
+            "blockName" : "orizontalSofa1x2",
+            "dimension" : {"x" : 2, "y" : 1},
+            "direction" : "Orizontal",
+            "isCharacter" : false
+        },
+
+        {
+            "id" : 5,
+            "blockName" : "orizontalSofa1x3",
+            "dimension" : {"x" : 3, "y" : 1},
+            "direction" : "Orizontal",
+            "isCharacter" : false
+        }]
+    },
+    {
+        "levelName" : "Level4",
+        "levelNumber" : 1,
+        "principalExit" : {"x" : 1, "y" : 2},
+        "MinMoveCounter" : 0,
+        "showGrid" : true,
+        "layoutData" : [
+            0, 0, 0, 0, 5, 0,
+            0, 0, 0, 5, 0, 5,
+            0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0,
+            4, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 5
+        ],
+
+        "data" :
+
+        [
+            {
+            "id" : 1,
+            "blockName" : "character",
+            "dimension" : {"x" : 1, "y" : 2},
+            "direction" : "Vertical",
+            "isCharacter" : true
+        },
+
+        {
+            "id" : 2,
+            "blockName" : "orizontalSofa2x1",
+            "dimension" : {"x" : 1, "y" : 2},
+            "direction" : "Vertical",
+            "isCharacter" : false
+        },
+
+        {
+            "id" : 3,
+            "blockName" : "orizontalSofa3x1",
+            "dimension" : {"x" : 1, "y" : 3},
+            "direction" : "Vertical",
+            "isCharacter" : false
+        },
+
+        {
+            "id" : 4,
+            "blockName" : "orizontalSofa1x2",
+            "dimension" : {"x" : 2, "y" : 1},
+            "direction" : "Orizontal",
+            "isCharacter" : false
+        },
+
+        {
+            "id" : 5,
+            "blockName" : "orizontalSofa1x3",
+            "dimension" : {"x" : 3, "y" : 1},
+            "direction" : "Orizontal",
             "isCharacter" : false
         }]
     }
