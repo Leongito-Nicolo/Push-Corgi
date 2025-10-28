@@ -41,5 +41,10 @@ public class GameUIManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void Undo()
+    {
+        GameManager.Instance.UndoMove();
+    }
+
 
 }

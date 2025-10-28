@@ -1,4 +1,18 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+public class Move
+{
+    public Draggable currentDraggable;
+    public Vector3 oldPosition;
+
+    public Move(Draggable currentDraggable, Vector3 oldPosition)
+    {
+        this.currentDraggable = currentDraggable;
+        this.oldPosition = oldPosition;
+    }
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     private int _currentLevel = 1;
     private int _totalLevel;
+
+    public Stack<Move> moves = new();
 
 
 
@@ -69,6 +85,21 @@ public class GameManager : MonoBehaviour
         }
 
         _currentLevel = levelNumber;
+    }
+
+    public void UndoMove()
+    {
+        if (moves.Count <= 0) return;
+
+        Move moveToRevert = moves.Peek();
+
+        if (moveToRevert.currentDraggable.isSnapping) return;
+
+        movesCounter--;
+        StartCoroutine(moveToRevert.currentDraggable.SnapRoutine(moveToRevert.oldPosition));
+
+        moves.Pop();
+
     }
 
 }
