@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float velocity = 5f;
+    private float velocity = 9f;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Win"))
