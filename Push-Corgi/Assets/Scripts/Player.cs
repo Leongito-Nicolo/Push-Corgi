@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Coroutine movement;
+    private float velocity = 5f;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Win"))
         {
             Draggable drag = transform.GetComponent<Draggable>();
-            //StopAllCoroutines();
-            StartCoroutine(drag.SnapRoutine(Vector3.right * 12f));
+            StartCoroutine(drag.SnapRoutine(Vector3.right * velocity));
             GameManager.Instance.hasWon = true;
         }
     }
