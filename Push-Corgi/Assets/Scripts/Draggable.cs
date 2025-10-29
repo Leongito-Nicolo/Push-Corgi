@@ -41,6 +41,7 @@ public class Draggable : MonoBehaviour
         col = GetComponent<BoxCollider>();
     }
 
+    //creato metodo per le verifiche del drag e messo in fixedUpdate per ottimizazione e evitarev possibili lag
     private void FixedUpdate()
     {
         if (!isDragging || isSnapping) return;

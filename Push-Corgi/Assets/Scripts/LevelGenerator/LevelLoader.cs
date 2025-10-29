@@ -112,7 +112,7 @@ public class LevelLoader : MonoBehaviour
         LevelData[] allLevels = _levelGlobalContainer.Levels;
 
         int currentIndex = Array.FindIndex(
-            allLevels, 
+            allLevels,
             level => level.levelName.Equals(CurrentLevelName, StringComparison.OrdinalIgnoreCase)
         );
 
@@ -136,7 +136,44 @@ public class LevelLoader : MonoBehaviour
             Debug.Log("COMPLETATO: Sei all'ultimo livello. Non ci sono altri livelli da caricare.");
         }
     }
+    
+    public void LoadPreviousLevel()
+    {
+        if (_levelGlobalContainer == null || _levelGlobalContainer.Levels == null || string.IsNullOrEmpty(CurrentLevelName))
+        {
+            Debug.LogError("Impossibile caricare il livello precedente: I dati non sono stati caricati o il livello corrente non è definito.");
+            return;
+        }
 
+        LevelData[] allLevels = _levelGlobalContainer.Levels;
 
+        int currentIndex = System.Array.FindIndex(
+            allLevels, 
+            level => level.levelName.Equals(CurrentLevelName, System.StringComparison.OrdinalIgnoreCase)
+        );
 
+        if (currentIndex == -1)
+        {
+            Debug.LogError($"Livello corrente '{CurrentLevelName}' non trovato nella lista dei livelli.");
+            return;
+        }
+
+        int previousIndex = currentIndex - 1;
+
+        if (previousIndex >= 0)
+        {
+            string previousLevelName = allLevels[previousIndex].levelName;
+            
+            Debug.Log($"Caricamento del livello precedente: {previousLevelName}");
+            LoadLevelByName(previousLevelName);
+        }
+        else
+        {
+            Debug.Log("Sei già al primo livello. Impossibile tornare indietro.");
+        }
+    }
 }
+
+
+
+
