@@ -16,6 +16,8 @@ public class LevelGenerator : MonoBehaviour
 
     public static LevelGenerator Instance { get; private set; }
 
+    public Vector3 FixedExitPosition = new Vector3(6, 0, 3);
+
 
     private void Awake()
     {
@@ -35,7 +37,7 @@ public class LevelGenerator : MonoBehaviour
 
     {
         SceneCleaner();
-        //ExitGenerator(_levelData.principalExit.ToVector2Int());
+        SpawnExitPrefab();
         BlockGenerator(_levelData, line, col);
 
         GridGenerator(line, col);
@@ -114,6 +116,20 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void SpawnExitPrefab()
+    {
+        if (exitPrefab == null)
+    {
+        Debug.LogWarning("Exit Prefab non assegnato in LevelGenerator. Assegnalo nell'Inspector.");
+        return;
+    }
+
+        Vector3 worldPos = FixedExitPosition;
+
+        GameObject exitGO = Instantiate(exitPrefab, worldPos, Quaternion.identity);
+        _spawnedObjects.Add(exitGO);
     }
 
     private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col, Direction courrentDirection)

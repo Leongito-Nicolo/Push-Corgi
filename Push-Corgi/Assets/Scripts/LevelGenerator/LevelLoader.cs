@@ -89,11 +89,10 @@ public class LevelLoader : MonoBehaviour
         if (selectedLevel != null)
         {
             CurrentLevelName = name;
-            // Trova le dimensioni globali e chiama la generazione
+
             int line = _levelGlobalContainer.line;
             int col = _levelGlobalContainer.col;
 
-            // Avvia la generazione del livello
             LevelGenerator.Instance.LevelGenerate(selectedLevel, line, col);
         }
         else
@@ -101,5 +100,43 @@ public class LevelLoader : MonoBehaviour
             Debug.LogError($"Livello '{name}' non trovato nei dati JSON.");
         }
     }
+
+    public void LoadNextLevel()
+    {
+        if (_levelGlobalContainer == null || _levelGlobalContainer.Levels == null || string.IsNullOrEmpty(CurrentLevelName))
+        {
+            Debug.LogError("Impossibile caricare il livello successivo: I dati non sono stati caricati o il livello corrente non è definito.");
+            return;
+        }
+
+        LevelData[] allLevels = _levelGlobalContainer.Levels;
+
+        int currentIndex = Array.FindIndex(
+            allLevels, 
+            level => level.levelName.Equals(CurrentLevelName, StringComparison.OrdinalIgnoreCase)
+        );
+
+        if (currentIndex == -1)
+        {
+            Debug.LogError($"Livello corrente '{CurrentLevelName}' non trovato nella lista dei livelli.");
+            return;
+        }
+
+        int nextIndex = currentIndex + 1;
+
+        if (nextIndex < allLevels.Length)
+        {
+            string nextLevelName = allLevels[nextIndex].levelName;
+
+            Debug.Log($"Caricamento del livello successivo: {nextLevelName}");
+            LoadLevelByName(nextLevelName);
+        }
+        else
+        {
+            Debug.Log("COMPLETATO: Sei all'ultimo livello. Non ci sono altri livelli da caricare.");
+        }
+    }
+
+
 
 }

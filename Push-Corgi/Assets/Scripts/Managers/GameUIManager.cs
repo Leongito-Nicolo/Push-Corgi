@@ -11,8 +11,6 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _gameMovesText;
 
     public Button button;
-
-
       private void Awake()
     {
         if (Instance == null)
@@ -34,6 +32,16 @@ public class GameUIManager : MonoBehaviour
     public void UpdateMoves()
     {
         _gameMovesText.text = "Moves: " + GameManager.Instance.movesCounter;
+    }
+
+    public void OnNextLevelButtonClicked()
+    {
+        if (LevelLoader.Instance == null)
+        {
+            Debug.LogError("Il LevelLoader non è attivo. Impossibile passare al livello successivo.");
+            return;
+        }
+        LevelLoader.Instance.LoadNextLevel();
     }
 
     public void Restart()
