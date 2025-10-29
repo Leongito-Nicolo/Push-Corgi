@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Win"))
         {
+            Animator doorAnimator = other.GetComponent<Animator>();
+            doorAnimator.SetTrigger("OPEN");
             Draggable drag = transform.GetComponent<Draggable>();
             StartCoroutine(drag.SnapRoutine(Vector3.right * velocity));
             GameManager.Instance.hasWon = true;

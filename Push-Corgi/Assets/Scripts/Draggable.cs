@@ -99,12 +99,14 @@ public class Draggable : MonoBehaviour
         oldPosition = transform.position;
         distanceFromCamera = Vector3.Distance(mainCamera.transform.position, transform.position);
         this.offset = offset;
+        StartAnimation();
     }
 
     public void StopDrag()
     {
         isDragging = false;
         offset = Vector3.zero;
+        StopAnimation();
         SnapToGrid();
     }
 
@@ -162,5 +164,31 @@ public class Draggable : MonoBehaviour
         }
         transform.position = target;
         isSnapping = false;
+    }
+
+    public void StartAnimation()
+    {
+        if (transform.TryGetComponent(out Player player))
+        {
+            Animator playerAnimator = player.GetComponentInChildren<Animator>();
+            playerAnimator.SetTrigger("RUN");
+        }
+        else    //table
+        {
+
+        }
+    }
+
+    public void StopAnimation()
+    {
+        if (transform.TryGetComponent(out Player player))
+        {
+            Animator playerAnimator = player.GetComponentInChildren<Animator>();
+            playerAnimator.SetTrigger("STOP");
+        }
+        else    //table
+        {
+
+        }
     }
 }
