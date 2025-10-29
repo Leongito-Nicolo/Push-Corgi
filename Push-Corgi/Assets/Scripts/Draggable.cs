@@ -41,7 +41,14 @@ public class Draggable : MonoBehaviour
         col = GetComponent<BoxCollider>();
     }
 
-    private void Update()
+    private void FixedUpdate()
+    {
+        if (!isDragging || isSnapping) return;
+
+        HandleDraggingMovement();
+    }
+
+    private void HandleDraggingMovement()
     {
         if (!isDragging) return;
 
