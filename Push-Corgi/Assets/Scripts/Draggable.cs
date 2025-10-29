@@ -95,6 +95,7 @@ public class Draggable : MonoBehaviour
 
     public void StartDrag(Vector3 offset)
     {
+        SoundManager.Instance.PlayGameSound(SoundManager.Instance.startDragSound);
         isDragging = true;
         oldPosition = transform.position;
         distanceFromCamera = Vector3.Distance(mainCamera.transform.position, transform.position);

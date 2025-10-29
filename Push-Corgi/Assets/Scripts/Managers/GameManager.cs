@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SoundManager.Instance.PlayBackgroundSound(SoundManager.Instance.mainTrack);
     }
     void Start()
     {
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
         if (moveToRevert.currentDraggable.isSnapping) return;
 
         movesCounter--;
+        SoundManager.Instance.PlayGameSound(SoundManager.Instance.rewindSound);
         StartCoroutine(moveToRevert.currentDraggable.SnapRoutine(moveToRevert.oldPosition));
 
         moves.Pop();

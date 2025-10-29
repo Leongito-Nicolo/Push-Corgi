@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
             Draggable drag = transform.GetComponent<Draggable>();
             StartCoroutine(drag.SnapRoutine(Vector3.right * velocity));
             GameManager.Instance.hasWon = true;
+            SoundManager.Instance.PlayGameSound(SoundManager.Instance.winSound);
         }
     }
 }
