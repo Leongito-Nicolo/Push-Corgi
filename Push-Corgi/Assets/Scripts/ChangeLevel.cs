@@ -9,6 +9,9 @@ public class ChangeLevel : MonoBehaviour
 
     public GameObject levelsPanel;
 
+    //public GameObject nextLevelButton;
+    //public GameObject previusLevelButton;
+
     void Awake()
     {
         _gameManager = GameManager.Instance;
@@ -28,6 +31,8 @@ public class ChangeLevel : MonoBehaviour
         if (levelsPanel != null)
         {
             levelsPanel.SetActive(false);
+            //nextLevelButton.SetActive(true);
+            //previusLevelButton.SetActive(true);
         }
         else
         {
