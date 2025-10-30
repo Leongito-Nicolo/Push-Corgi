@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public bool hasWon = false;
-    public bool isPaused = false;
     public int movesCounter = 0;
 
     private int _currentLevel = 1;
@@ -39,6 +38,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        //SoundManager.Instance.PlayBackgroundSound(SoundManager.Instance.mainTrack);
     }
     void Start()
     {
