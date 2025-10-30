@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9041c9bddba1a544f83c9af061bfa95e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 793ad39769b2aee44bc6e34cad66a3d9, type: 2}
     - target: {fileID: 919132149155446097, guid: 9041c9bddba1a544f83c9af061bfa95e, type: 3}
       propertyPath: m_Name
       value: Obstacle_Couch_Horizontal

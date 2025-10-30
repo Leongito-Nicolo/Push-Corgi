@@ -34,6 +34,8 @@ public class Draggable : MonoBehaviour
 
     private BoxCollider col;
     public bool isSnapping;
+    private Vector3 moveDir;
+    private bool isLeft;
 
     private void Awake()
     {
@@ -57,7 +59,6 @@ public class Draggable : MonoBehaviour
         Vector3 targetPos = dragPos;
         targetPos.y = currentPos.y;
 
-        Vector3 moveDir;
         float distance;
 
         if (direction == Direction.Horizontal)
@@ -95,6 +96,7 @@ public class Draggable : MonoBehaviour
 
     public void StartDrag(Vector3 offset)
     {
+        SoundManager.Instance.PlayGameSound(SoundManager.Instance.startDragSound);
         isDragging = true;
         oldPosition = transform.position;
         distanceFromCamera = Vector3.Distance(mainCamera.transform.position, transform.position);
@@ -173,9 +175,20 @@ public class Draggable : MonoBehaviour
             Animator playerAnimator = player.GetComponentInChildren<Animator>();
             playerAnimator.SetTrigger("RUN");
         }
-        else    //table
+        else if (transform.CompareTag("Table"))
         {
+            Animator obstacleAnimator = GetComponent<Animator>();
 
+            if (moveDir.x > 0 || moveDir.z > 0)
+            {
+                isLeft = true;
+                obstacleAnimator.SetTrigger("SLIDE1_START");
+            }
+            else
+            {
+                isLeft = false;
+                obstacleAnimator.SetTrigger("SLIDE2_START");
+            }
         }
     }
 
@@ -186,9 +199,17 @@ public class Draggable : MonoBehaviour
             Animator playerAnimator = player.GetComponentInChildren<Animator>();
             playerAnimator.SetTrigger("STOP");
         }
-        else    //table
+        else if (transform.CompareTag("Table"))
         {
-
+            Animator obstacleAnimator = GetComponent<Animator>();
+            if (isLeft)
+            {
+                obstacleAnimator.SetTrigger("SLIDE1_END");
+            }
+            else
+            {
+                obstacleAnimator.SetTrigger("SLIDE2_END");
+            }
         }
     }
 }
