@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   hasWon: 0
+  isPaused: 0
   movesCounter: 0
 --- !u!1 &9012000682612161656
 GameObject:
@@ -118,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 9012000682612161656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.74605, y: -3.29947, z: 3.06539}
+  m_LocalPosition: {x: -3.71, y: -3.29947, z: 3.06539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -136,5 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2a5d3d95e3c8441b5ef43f4bff0aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
-  prefabBlocks: []
+  prefabBlocks:
+  - {fileID: 7961584556886206004, guid: 470a26a33a103ec4abc1d82461f25715, type: 3}
+  - {fileID: 2051725703965580363, guid: 0be4a01e0659cb04692c1af854cdaa51, type: 3}
+  - {fileID: 371173510416041938, guid: e631ac76136e2174c9a241e284476629, type: 3}
+  - {fileID: 9014093693433784356, guid: eae259e9eec78db49838df1fdd220bfb, type: 3}
+  - {fileID: 2629624757414643447, guid: d734cc20437b2654e99f1013b2168051, type: 3}
+  gridPrefab: {fileID: 919132149155446097, guid: bb63f9925f7a7aa47bfbb3a5524cb918, type: 3}
   exitPrefab: {fileID: 0}
+  FixedExitPosition: {x: 6, y: 0, z: 3}
+  FixedGridPosition: {x: 0, y: 0, z: 0}
