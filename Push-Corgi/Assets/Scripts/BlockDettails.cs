@@ -13,7 +13,8 @@ public class BlockDettails
 {
     public int id;
     public string name;
-    public Vector2 dimension;
+    public Vector2Int dimension;
+    
     public Direction direction;
 
     public bool character;

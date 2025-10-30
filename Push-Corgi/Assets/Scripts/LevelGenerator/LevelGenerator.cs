@@ -18,6 +18,8 @@ public class LevelGenerator : MonoBehaviour
 
     public Vector3 FixedExitPosition = new Vector3(6, 0, 3);
 
+    public Vector3 FixedGridPosition = new Vector3(0, 0, 0);
+
 
     private void Awake()
     {
@@ -39,8 +41,8 @@ public class LevelGenerator : MonoBehaviour
         SceneCleaner();
         SpawnExitPrefab();
         BlockGenerator(_levelData, line, col);
-
-        GridGenerator(line, col);
+        SpawnGridRightPosition();
+        //GridGenerator(line, col);
     }
 
     public void SceneCleaner()
@@ -97,7 +99,7 @@ public class LevelGenerator : MonoBehaviour
 
                     Vector2Int startPosition = new Vector2Int(x, y);
 
-                    Vector3 worldPos = GridToWorldPosition(startPosition, line, col, courrentDirection);
+                    Vector3 worldPos = GridToWorldPosition(startPosition, line, col, courrentDirection, IDBlock);
 
                     int prefabIndex = IDBlock - 1;
 
@@ -118,6 +120,13 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    private void SpawnGridRightPosition()
+    {
+        Vector3 worldPos = FixedGridPosition;
+        GameObject gridGo = Instantiate(gridPrefab, worldPos, gridPrefab.transform.rotation);
+        _spawnedObjects.Add(gridGo);
+    }
+
     private void SpawnExitPrefab()
     {
         if (exitPrefab == null)
@@ -128,38 +137,31 @@ public class LevelGenerator : MonoBehaviour
 
         Vector3 worldPos = FixedExitPosition;
 
-        GameObject exitGO = Instantiate(exitPrefab, worldPos, Quaternion.identity);
+        GameObject exitGO = Instantiate(exitPrefab, worldPos, exitPrefab.transform.rotation);
         _spawnedObjects.Add(exitGO);
     }
 
-    private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col, Direction courrentDirection)
+    private Vector3 GridToWorldPosition(Vector2Int gridPos, int line, int col, Direction courrentDirection, int blockID)
     {
-
-        float halfGridScale = gridScale / 2f;
 
         float y_original = gridPos.y;
         float x_inverted = col - 1 - gridPos.x;
 
-        float finalX = 0f;
-        float finalZ = 0f;
+        float finalX = y_original * gridScale;
+        float finalZ = x_inverted * gridScale;
+        
+        // Variabile Y per gestire l'altezza (di default 0)
+        float finalY = 0f; 
 
-
-        if (courrentDirection == Direction.Horizontal)
+        // LOGICA: Sposta solo il player (ID 1)
+        if (blockID == 1) // Assumendo che il Player abbia ID = 1
         {
-            finalX = y_original * gridScale + halfGridScale;
-            finalZ = x_inverted * gridScale;
-        }
-
-        else if (courrentDirection == Direction.Vertical)
-        {
-            finalX = y_original * gridScale + halfGridScale;
-            finalZ = x_inverted * gridScale;
+            finalY += 0.5f; // Sposta 0.5 più in alto in Y
+            finalZ -= 0.5f; // Sposta 0.5 più in basso in Z
         }
         
-        //float finalX = y_original * gridScale + halfGridScale;
-        //float finalZ = x_inverted * gridScale + halfGridScale;
-
-        return new Vector3(finalX, 0, finalZ);
+        // ⭐ MODIFICA CHIAVE: Restituisce direttamente il Vector3 calcolato
+        return new Vector3(finalX, finalY, finalZ);
     }
 
     public void GridGenerator(int line, int col)
