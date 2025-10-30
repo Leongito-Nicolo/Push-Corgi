@@ -11,7 +11,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _gameMovesText;
 
     public Button button;
-      private void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -75,7 +75,7 @@ public class GameUIManager : MonoBehaviour
         }
 
     }
-    
+
     void OnDestroy()
     {
         if (button != null)
@@ -92,6 +92,11 @@ public class GameUIManager : MonoBehaviour
     public void Undo()
     {
         GameManager.Instance.UndoMove();
+    }
+
+    public void PauseUnpause()
+    {
+        GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
     }
 
 
