@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     public Stack<Move> moves = new();
 
+    
+
 
 
     void Awake()
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //SoundManager.Instance.PlayBackgroundSound(SoundManager.Instance.mainTrack);
+        SoundManager.Instance.PlayBackgroundSound(SoundManager.Instance.mainTrack);
     }
     void Start()
     {

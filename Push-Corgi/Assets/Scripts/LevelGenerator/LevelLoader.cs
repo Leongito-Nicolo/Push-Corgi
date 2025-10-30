@@ -14,7 +14,11 @@ public class LevelLoader : MonoBehaviour
 
     public static LevelLoader Instance { get; private set; }
 
-    public string CurrentLevelName { get; private set; }
+    public string CurrentLevelName { get; set; }
+
+    public static event Action OnLevelsReady;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -29,7 +33,6 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadAllLevel()
     {
-        //TextAsset jsonFile = Resources.Load<TextAsset>("JSONChessboardLevel");
         TextAsset jsonFile = Resources.Load<TextAsset>("JSONpROVA");
 
         if (jsonFile == null)
@@ -44,6 +47,8 @@ public class LevelLoader : MonoBehaviour
 
             if (_levelGlobalContainer != null)
             {
+                OnLevelsReady?.Invoke();
+                Debug.Log($"Dati caricati {_levelGlobalContainer.Levels.Length}");
                 GlobalLine = _levelGlobalContainer.line;
                 GlobalCol = _levelGlobalContainer.col;
                 Debug.Log($"Dati caricati {_levelGlobalContainer.Levels.Length}");
@@ -147,9 +152,9 @@ public class LevelLoader : MonoBehaviour
 
         LevelData[] allLevels = _levelGlobalContainer.Levels;
 
-        int currentIndex = System.Array.FindIndex(
+        int currentIndex = Array.FindIndex(
             allLevels,
-            level => level.levelName.Equals(CurrentLevelName, System.StringComparison.OrdinalIgnoreCase)
+            level => level.levelName.Equals(CurrentLevelName, StringComparison.OrdinalIgnoreCase)
         );
 
         if (currentIndex == -1)
@@ -173,20 +178,34 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void CalculateStars(int uneStars, int twoSatrs, int threeStars, int playerMoves)
+    public void CalculateStars(int uneStars, int twoStars, int threeStars, int playerMoves)
     {
-        if (playerMoves == uneStars)
+        if (playerMoves >= threeStars)
         {
-            
+            Debug.Log("hai ottenuto 3 stelle");
         }
-        else if (playerMoves == twoSatrs)
+        else if (playerMoves >= twoStars)
         {
-           
+            Debug.Log("hai ottenuto 2 stelle");
         }
-        else if(playerMoves == threeStars)
+        else if (playerMoves >= uneStars)
         {
-            
+            Debug.Log("hai ottenuto 1 stella");
         }
+    }
+    
+    public LevelData GetCurrentLevelData()
+    {
+        if (_levelGlobalContainer == null || _levelGlobalContainer.Levels == null || string.IsNullOrEmpty(CurrentLevelName))
+        {
+            Debug.LogError("Impossibile trovare i dati del livello corrente.");
+            return null;
+        }
+
+        return Array.Find(
+            _levelGlobalContainer.Levels,
+            level => level.levelName.Equals(CurrentLevelName, StringComparison.OrdinalIgnoreCase)
+        );
     }
 }
 

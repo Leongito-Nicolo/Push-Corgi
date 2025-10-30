@@ -10,28 +10,38 @@ public class MainMenuUI : MonoBehaviour
     public RectTransform currentParent;
 
     public GameObject levelsPanelToClose;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void Awake()
+    {
+        LevelLoader.OnLevelsReady += OnLevelsReadyToGenerate;
+    }
+
+    public void OnLevelsReadyToGenerate()
     {
         if (GameManager.Instance == null || LevelLoader.Instance == null)
         {
-            Debug.LogError("GameManager o LevelLoader non inizializzati. Controlla l'ordine di esecuzione.");
+            Debug.LogError("GameManager o LevelLoader non inizializzati.");
             return;
         }
+
         LevelData[] levels = LevelLoader.Instance.AllLevels;
 
         if (levels != null && levels.Length > 0)
         {
             GenerateLevelButtons(levels);
         }
-
         else
         {
-            Debug.LogError("Nessun dato sui livelli disponibile per la generazione dei pulsanti.");
+            Debug.LogError("Nessun dato sui livelli disponibile per la generazione dei pulsanti, nonostante l'evento di caricamento.");
         }
     }
 
-    // Update is called once per frame
+    void OnDestroy()
+    {
+        LevelLoader.OnLevelsReady -= OnLevelsReadyToGenerate;
+    }
+
+
     private void GenerateLevelButtons(LevelData[] levels)
     {
         foreach (LevelData level in levels)
@@ -61,7 +71,6 @@ public class MainMenuUI : MonoBehaviour
             Button button = buttonGO.GetComponent<Button>();
             if (button != null)
             {
-                // Collega la funzione OnLevelSelected con il listener standard
                 button.onClick.AddListener(levelChanger.OnLevelSelected);
             }
         }

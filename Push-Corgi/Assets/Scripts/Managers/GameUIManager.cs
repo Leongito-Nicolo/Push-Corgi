@@ -94,10 +94,10 @@ public class GameUIManager : MonoBehaviour
         GameManager.Instance.UndoMove();
     }
 
-    /*public void PauseUnpause()
+    public void PauseUnpause()
     {
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
-    }*/
+    }
 
 
 }

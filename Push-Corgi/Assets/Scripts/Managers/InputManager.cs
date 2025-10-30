@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
         if (context.started)
         {
             if (GameManager.Instance.hasWon) return;
-            //if (GameManager.Instance.isPaused) return;
+            if (GameManager.Instance.isPaused) return;
 
             Ray ray = Camera.main.ScreenPointToRay(currentPos);
             if (Physics.Raycast(ray, out RaycastHit hit))
