@@ -136,7 +136,7 @@ public class LevelLoader : MonoBehaviour
             Debug.Log("COMPLETATO: Sei all'ultimo livello. Non ci sono altri livelli da caricare.");
         }
     }
-    
+
     public void LoadPreviousLevel()
     {
         if (_levelGlobalContainer == null || _levelGlobalContainer.Levels == null || string.IsNullOrEmpty(CurrentLevelName))
@@ -148,7 +148,7 @@ public class LevelLoader : MonoBehaviour
         LevelData[] allLevels = _levelGlobalContainer.Levels;
 
         int currentIndex = System.Array.FindIndex(
-            allLevels, 
+            allLevels,
             level => level.levelName.Equals(CurrentLevelName, System.StringComparison.OrdinalIgnoreCase)
         );
 
@@ -163,13 +163,29 @@ public class LevelLoader : MonoBehaviour
         if (previousIndex >= 0)
         {
             string previousLevelName = allLevels[previousIndex].levelName;
-            
+
             Debug.Log($"Caricamento del livello precedente: {previousLevelName}");
             LoadLevelByName(previousLevelName);
         }
         else
         {
             Debug.Log("Sei già al primo livello. Impossibile tornare indietro.");
+        }
+    }
+
+    public void CalculateStars(int uneStars, int twoSatrs, int threeStars, int playerMoves)
+    {
+        if (playerMoves == uneStars)
+        {
+            
+        }
+        else if (playerMoves == twoSatrs)
+        {
+           
+        }
+        else if(playerMoves == threeStars)
+        {
+            
         }
     }
 }

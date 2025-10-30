@@ -6,6 +6,9 @@ public class LevelData
 {
     public string levelName;
     public Vector2Int principalExit;
+    public int uneStars;
+    public int twoSatrs;
+    public int threeSatrs;
     public int moveCounter;
     public int[] layoutData;
     public List<BlockDettails> data;

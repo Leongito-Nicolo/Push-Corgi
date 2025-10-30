@@ -151,13 +151,22 @@ public class LevelGenerator : MonoBehaviour
         float finalZ = x_inverted * gridScale;
         
         
-        float finalY = 0f; 
+        float finalY = 0f;
 
-        
+
         if (blockID == 1) // Assumendo che il Player abbia ID = 1
         {
             finalY += 0.5f; // Sposta 0.5 più in alto in Y
             finalZ -= 0.5f; // Sposta 0.5 più in basso in Z
+        }
+        if (blockID == 5)
+        {
+            finalZ -= 0.5f;
+        }
+        if (blockID == 3)
+        {
+            finalX -= 0.5f;
+            finalZ += 0.15f;
         }
         
         
