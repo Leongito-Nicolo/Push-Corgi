@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        SoundManager.Instance.PlayBackgroundSound(SoundManager.Instance.mainTrack);
+        //SoundManager.Instance.PlayBackgroundSound(SoundManager.Instance.mainTrack);
     }
     void Start()
     {

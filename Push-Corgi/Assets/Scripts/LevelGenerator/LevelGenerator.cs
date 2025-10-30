@@ -150,17 +150,17 @@ public class LevelGenerator : MonoBehaviour
         float finalX = y_original * gridScale;
         float finalZ = x_inverted * gridScale;
         
-        // Variabile Y per gestire l'altezza (di default 0)
+        
         float finalY = 0f; 
 
-        // LOGICA: Sposta solo il player (ID 1)
+        
         if (blockID == 1) // Assumendo che il Player abbia ID = 1
         {
             finalY += 0.5f; // Sposta 0.5 più in alto in Y
             finalZ -= 0.5f; // Sposta 0.5 più in basso in Z
         }
         
-        // ⭐ MODIFICA CHIAVE: Restituisce direttamente il Vector3 calcolato
+        
         return new Vector3(finalX, finalY, finalZ);
     }
 
