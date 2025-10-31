@@ -12,7 +12,12 @@ public class SetUpScene : MonoBehaviour
         }
         else
         {
+            // ⭐ AVVIA IL GIOCO SUBITO (Se StartGame è stato premuto)
             levelPannel.SetActive(false);
+            if (LevelLoader.Instance != null)
+            {
+                LevelLoader.Instance.StartFirstLevel();
+            }
         }
         
     }

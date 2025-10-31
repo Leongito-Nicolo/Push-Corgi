@@ -24,6 +24,7 @@ public class LevelLoader : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            LoadAllLevel();
         }
         else if (Instance != this)
         {
@@ -193,7 +194,7 @@ public class LevelLoader : MonoBehaviour
             Debug.Log("hai ottenuto 1 stella");
         }
     }
-    
+
     public LevelData GetCurrentLevelData()
     {
         if (_levelGlobalContainer == null || _levelGlobalContainer.Levels == null || string.IsNullOrEmpty(CurrentLevelName))
@@ -206,6 +207,22 @@ public class LevelLoader : MonoBehaviour
             _levelGlobalContainer.Levels,
             level => level.levelName.Equals(CurrentLevelName, StringComparison.OrdinalIgnoreCase)
         );
+    }
+    public void StartFirstLevel()
+    {
+        if (_levelGlobalContainer != null && _levelGlobalContainer.Levels.Length > 0)
+        {
+            string firstLevelName = _levelGlobalContainer.Levels[0].levelName;
+            
+            
+            LoadLevelByName(firstLevelName); 
+            
+            Debug.Log($"Inizio del gioco: caricato il primo livello ({firstLevelName})");
+        }
+        else
+        {
+            Debug.LogError("Impossibile avviare il primo livello: nessun dato disponibile.");
+        }
     }
 }
 

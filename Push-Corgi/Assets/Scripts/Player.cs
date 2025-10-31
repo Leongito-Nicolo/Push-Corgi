@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
             GameManager.Instance.hasWon = true;
             SoundManager.Instance.PlayGameSound(SoundManager.Instance.winSound);
 
+            //logica del calcolo dello score richiamata alla vittoria
             LevelData currentData = LevelLoader.Instance.GetCurrentLevelData();
 
             int playerMovesCount = GameManager.Instance.movesCounter;

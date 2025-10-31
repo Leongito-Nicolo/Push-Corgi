@@ -45,7 +45,7 @@ public class ChangeLevel : MonoBehaviour
             return;
         }
 
-        // Verifica 2: LevelLoader (L'oggetto che è NULL alla riga 25)
+        
         if (LevelLoader.Instance == null)
         {
             Debug.LogError("Errore ChangeLevel: GameManager.LevelLoader è NULL. Assegnalo nell'Inspector!");
