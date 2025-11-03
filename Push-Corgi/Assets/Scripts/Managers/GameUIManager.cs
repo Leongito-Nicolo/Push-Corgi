@@ -36,12 +36,14 @@ public class GameUIManager : MonoBehaviour
 
     public void OnNextLevelButtonClicked()
     {
+        _winPanel.SetActive(false);
         if (LevelLoader.Instance == null)
         {
             Debug.LogError("Il LevelLoader non è attivo. Impossibile passare al livello successivo.");
             return;
         }
         LevelLoader.Instance.LoadNextLevel();
+        
     }
 
     public void OnPreviousLevelButtonClicked()
