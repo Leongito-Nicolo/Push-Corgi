@@ -7,25 +7,51 @@ public class SettingsUIManager : MonoBehaviour
     public Sprite oldButtonImage;
     public Image buttonImage;
     public bool isChanged = false;
+    private string settingKey;
+
+    private void Start()
+    {
+        settingKey = gameObject.name;
+
+        isChanged = PlayerPrefs.GetInt(settingKey, 0) == 1;
+
+        buttonImage.sprite = isChanged ? newButtonImage : oldButtonImage;
+
+        Music();
+        Sound();
+        Vibration();
+    }
 
     public void ChangeButtonImage()
     {
-        buttonImage.sprite = isChanged ? oldButtonImage : newButtonImage;
         isChanged = !isChanged;
+
+        buttonImage.sprite = isChanged ? newButtonImage : oldButtonImage;
+
+        PlayerPrefs.SetInt(settingKey, isChanged ? 1 : 0);
+
+        Music();
+        Sound();
+        Vibration();
     }
 
     public void Music()
     {
-        SoundManager.Instance.backgroundSource.mute = isChanged ? false : true;
+        if (settingKey == "Music")
+            SoundManager.Instance.backgroundSource.mute = isChanged;
     }
 
     public void Sound()
     {
-        SoundManager.Instance.gameSource.mute = isChanged ? false : true;
+        if (settingKey == "Sound")
+            SoundManager.Instance.gameSource.mute = isChanged;
     }
 
     public void Vibration()
     {
+        if (settingKey == "Vibration")
+        {
 
+        }
     }
 }
