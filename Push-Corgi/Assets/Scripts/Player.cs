@@ -24,16 +24,18 @@ public class Player : MonoBehaviour
             GameManager.Instance.hasWon = true;
             SoundManager.Instance.PlayGameSound(SoundManager.Instance.winSound);
 
+            Debug.Log("🎉 Sto per calcolare le stelle!");
             //logica del calcolo dello score richiamata alla vittoria
             LevelData currentData = LevelLoader.Instance.GetCurrentLevelData();
 
-            int playerMovesCount = GameManager.Instance.movesCounter;
-            if (currentData != null){
+            Debug.Log($"Dati Caricati: 3 Stelle={currentData.threeStar} | 2 Stelle={currentData.twoStar} | 1 Stella={currentData.uneStar}");
+
+            if (currentData != null)
+            {
                 LevelLoader.Instance.CalculateStars(
-                currentData.threeSatrs,
-                currentData.twoSatrs,
-                currentData.uneStars, 
-                playerMovesCount
+                    currentData.uneStar,
+                    currentData.twoStar,
+                    currentData.threeStar
                 );
             }
         }

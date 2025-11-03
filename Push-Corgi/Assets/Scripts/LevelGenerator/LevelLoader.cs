@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class LevelLoader : MonoBehaviour
     public string CurrentLevelName { get; set; }
 
     public static event Action OnLevelsReady;
+
+    public GameObject threeStarsImage;
+
+    public GameObject twoStarsImage;
+
+    public GameObject uneStarsImage;
+
+
 
 
     private void Awake()
@@ -179,18 +188,28 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void CalculateStars(int uneStars, int twoStars, int threeStars, int playerMoves)
+    public void CalculateStars(int oneStarLimit, int twoStarsLimit, int threeStarsLimit)
     {
-        if (playerMoves >= threeStars)
+        
+        int playerMoves = GameManager.Instance.movesCounter;
+        Debug.Log($"Mosse del giocatore: {playerMoves}");
+        Debug.Log($"Calcolo Stelle: Mosse Giocatore={playerMoves} | Limiti (3/2/1) = {threeStarsLimit}/{twoStarsLimit}/{oneStarLimit}");
+        
+        if (playerMoves <= threeStarsLimit) 
         {
+            threeStarsImage.SetActive(true);
             Debug.Log("hai ottenuto 3 stelle");
         }
-        else if (playerMoves >= twoStars)
+       
+        else if (playerMoves <= twoStarsLimit) 
         {
+            twoStarsImage.SetActive(true);
             Debug.Log("hai ottenuto 2 stelle");
         }
-        else if (playerMoves >= uneStars)
+        
+        else if (playerMoves >= oneStarLimit) 
         {
+            uneStarsImage.SetActive(true);
             Debug.Log("hai ottenuto 1 stella");
         }
     }

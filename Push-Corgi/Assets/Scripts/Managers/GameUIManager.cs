@@ -73,7 +73,7 @@ public class GameUIManager : MonoBehaviour
         {
             Debug.LogWarning("Nessun livello è stato caricato in precedenza. Impossibile riavviare.");
         }
-
+        _winPanel.SetActive(false);
     }
 
     void OnDestroy()
