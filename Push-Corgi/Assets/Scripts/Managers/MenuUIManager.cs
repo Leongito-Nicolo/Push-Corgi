@@ -14,14 +14,14 @@ public class MenuUIManager : MonoBehaviour
     public void StartGame()
     {
         GameSetUpManager.shouldOpenLevelPanelOnLoad = false;
-        
-        SceneManager.LoadScene("test 1");
+
+        SceneManager.LoadScene("Game");
     }
 
     public void LevelSelection()
     {
         GameSetUpManager.shouldOpenLevelPanelOnLoad = true;
-        SceneManager.LoadScene("test 1");
+        SceneManager.LoadScene("Game");
 
     }
 }
