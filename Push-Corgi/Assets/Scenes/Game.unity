@@ -808,6 +808,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1618112216263359006, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618112216263359006, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618112216263359006, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1311195972}
+    - target: {fileID: 1618112216263359006, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnNextLevelButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618112216263359006, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618112216263359006, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2214191515607910771, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1122,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553205716106736827, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866808679753794635, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_AnchorMax.y
