@@ -26,12 +26,12 @@ public class GameUIManager : MonoBehaviour
     public void HasWon()
     {
         _winPanel.SetActive(true);
-        _movesText.text = "Moves: " + GameManager.Instance.movesCounter;
+        _movesText.text = $"{GameManager.Instance.movesCounter}";
     }
 
     public void UpdateMoves()
     {
-        _gameMovesText.text = "Moves: " + GameManager.Instance.movesCounter;
+        _gameMovesText.text = $"{GameManager.Instance.movesCounter}";
     }
 
     public void OnNextLevelButtonClicked()
@@ -43,7 +43,7 @@ public class GameUIManager : MonoBehaviour
             return;
         }
         LevelLoader.Instance.LoadNextLevel();
-        
+
     }
 
     public void OnPreviousLevelButtonClicked()
