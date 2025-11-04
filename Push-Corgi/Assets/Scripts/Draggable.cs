@@ -101,6 +101,7 @@ public class Draggable : MonoBehaviour
         oldPosition = transform.position;
         distanceFromCamera = Vector3.Distance(mainCamera.transform.position, transform.position);
         this.offset = offset;
+        dragPos = transform.position;
         StartAnimation();
     }
 

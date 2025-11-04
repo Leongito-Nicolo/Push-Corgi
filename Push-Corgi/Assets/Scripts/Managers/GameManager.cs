@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public Stack<Move> moves = new();
 
-    
+
 
 
 
@@ -100,8 +100,8 @@ public class GameManager : MonoBehaviour
 
         if (moveToRevert.currentDraggable.isSnapping) return;
 
-        movesCounter--;
         SoundManager.Instance.PlayGameSound(SoundManager.Instance.rewindSound);
+        movesCounter--;
         StartCoroutine(moveToRevert.currentDraggable.SnapRoutine(moveToRevert.oldPosition));
 
         moves.Pop();

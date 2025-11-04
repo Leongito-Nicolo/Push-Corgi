@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System;
-using Microsoft.Unity.VisualStudio.Editor;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -190,24 +188,24 @@ public class LevelLoader : MonoBehaviour
 
     public void CalculateStars(int oneStarLimit, int twoStarsLimit, int threeStarsLimit)
     {
-        
+
         int playerMoves = GameManager.Instance.movesCounter;
         Debug.Log($"Mosse del giocatore: {playerMoves}");
         Debug.Log($"Calcolo Stelle: Mosse Giocatore={playerMoves} | Limiti (3/2/1) = {threeStarsLimit}/{twoStarsLimit}/{oneStarLimit}");
-        
-        if (playerMoves <= threeStarsLimit) 
+
+        if (playerMoves <= threeStarsLimit)
         {
             threeStarsImage.SetActive(true);
             Debug.Log("hai ottenuto 3 stelle");
         }
-       
-        else if (playerMoves <= twoStarsLimit) 
+
+        else if (playerMoves <= twoStarsLimit)
         {
             twoStarsImage.SetActive(true);
             Debug.Log("hai ottenuto 2 stelle");
         }
-        
-        else if (playerMoves >= oneStarLimit) 
+
+        else if (playerMoves >= oneStarLimit)
         {
             uneStarsImage.SetActive(true);
             Debug.Log("hai ottenuto 1 stella");
@@ -232,10 +230,10 @@ public class LevelLoader : MonoBehaviour
         if (_levelGlobalContainer != null && _levelGlobalContainer.Levels.Length > 0)
         {
             string firstLevelName = _levelGlobalContainer.Levels[0].levelName;
-            
-            
-            LoadLevelByName(firstLevelName); 
-            
+
+
+            LoadLevelByName(firstLevelName);
+
             Debug.Log($"Inizio del gioco: caricato il primo livello ({firstLevelName})");
         }
         else
