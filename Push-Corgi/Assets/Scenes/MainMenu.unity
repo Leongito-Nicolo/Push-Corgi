@@ -1653,7 +1653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1045034532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1725,7 +1725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcf6a1fa35a1014096bc067078c75bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkinUIManager
-  skinPanel: {fileID: 0}
+  skinPanel: {fileID: 1427405471}
   skins:
   - {fileID: 21300000, guid: 97dff6720ec31c24b8e23929be6a0b73, type: 3}
   - {fileID: 21300000, guid: 301c5396d73b85a44906b691faa37688, type: 3}
