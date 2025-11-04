@@ -18,6 +18,8 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnLevelsReadyToGenerate()
     {
+        LevelLoader.OnLevelsReady -= OnLevelsReadyToGenerate;
+
         if (GameManager.Instance == null || LevelLoader.Instance == null)
         {
             Debug.LogError("GameManager o LevelLoader non inizializzati.");
@@ -28,7 +30,7 @@ public class MainMenuUI : MonoBehaviour
 
         if (levels != null && levels.Length > 0)
         {
-            GenerateLevelButtons(levels);
+                GenerateLevelButtons(levels);
         }
         else
         {
