@@ -711,6 +711,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4044752706618000917, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 93d12be668ea5834f9051c19f66d573c, type: 2}
+    - target: {fileID: 4044752706618000917, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5838809443660736736, guid: 93d12be668ea5834f9051c19f66d573c, type: 2}
+    - target: {fileID: 4044752706618000917, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4728306396882234114, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -841,7 +853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553205716106736827, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6227378732957118437, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_fontAsset
