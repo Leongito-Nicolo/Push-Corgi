@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
         GameUIManager.Instance.UpdateMoves();
         GameUIManager.Instance.LoadLevelByLoadedName();
+        //GameUIManager.Instance.MinMoveOnDisplay(data);
     }
 
     public void LoadLevel(int levelNumber)

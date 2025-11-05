@@ -4,10 +4,10 @@
     "exit" : {"x" : 2, "y" : 1},
     "Levels" : [
     {
-        "levelName" : "Level1",
+        "levelName" : "1",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "4",
         "threeStar" : 4,
         "twoStar" : 6,
         "uneStar" : 8,
@@ -66,10 +66,10 @@
     ]
     },
     {
-        "levelName" : "Level2",
+        "levelName" : "2",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "4",
         "threeStar" : 4,
         "twoStar" : 6,
         "uneStar" : 8,
@@ -127,10 +127,10 @@
         }]
     },
     {
-        "levelName" : "Level3",
+        "levelName" : "3",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "5",
         "threeStar" : 5,
         "twoStar" : 7,
         "uneStar" : 9,
@@ -188,10 +188,10 @@
         }]
     },
     {
-        "levelName" : "Level4",
+        "levelName" : "4",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "5",
         "threeStar" : 5,
         "twoStar" : 7,
         "uneStar" : 9,
@@ -249,10 +249,10 @@
         }]
     },
     {
-        "levelName" : "Level5",
+        "levelName" : "5",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "6",
         "threeStar" : 6,
         "twoStar" : 8,
         "uneStar" : 10,
@@ -310,10 +310,10 @@
         }]
     },
     {
-        "levelName" : "Level6",
+        "levelName" : "6",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "6",
         "threeStar" : 9,
         "twoStar" : 11,
         "uneStar" : 13,
@@ -371,10 +371,10 @@
         }]
     },
     {
-        "levelName" : "Level7",
+        "levelName" : "7",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "5",
         "threeStar" : 5,
         "twoStar" : 7,
         "uneStar" : 9,
@@ -432,10 +432,10 @@
         }]
     },
     {
-        "levelName" : "Level8",
+        "levelName" : "8",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "17",
         "threeStar" : 17,
         "twoStar" : 19,
         "uneStar" : 21,
@@ -493,10 +493,10 @@
         }]
     },
     {
-        "levelName" : "Level9",
+        "levelName" : "9",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "18",
         "threeStar" : 18,
         "twoStar" : 20,
         "uneStar" : 22,
@@ -554,10 +554,10 @@
         }]
     },
     {
-        "levelName" : "Level10",
+        "levelName" : "10",
         "levelNumber" : 1,
         "principalExit" : {"x" : 1, "y" : 2},
-        "MinMoveCounter" : 0,
+        "MinMoveCounter" : "16",
         "threeStar" : 16,
         "twoStar" : 18,
         "uneStar" : 20,

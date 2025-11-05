@@ -11,6 +11,8 @@ public class MainMenuUI : MonoBehaviour
 
     public GameObject levelsPanelToClose;
 
+    public TMP_Text minMovesText;
+
     void Awake()
     {
         LevelLoader.OnLevelsReady += OnLevelsReadyToGenerate;
@@ -30,12 +32,6 @@ public class MainMenuUI : MonoBehaviour
     public void OnLevelsReadyToGenerate()
     {
 
-
-        /*if (GameManager.Instance == null || LevelLoader.Instance == null)
-        {
-            Debug.LogError("GameManager o LevelLoader non inizializzati.");
-            return;
-        }*/
         
         LevelLoader.OnLevelsReady -= OnLevelsReadyToGenerate;
 

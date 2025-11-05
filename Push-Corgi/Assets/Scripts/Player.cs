@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private List<GameObject> skins;
     private float velocity = 9f;
+
 
 
     void Awake()
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
             Debug.Log("🎉 Sto per calcolare le stelle!");
             //logica del calcolo dello score richiamata alla vittoria
             LevelData currentData = LevelLoader.Instance.GetCurrentLevelData();
+            string currentLevelName = LevelLoader.Instance.CurrentLevelName;
 
             Debug.Log($"Dati Caricati: 3 Stelle={currentData.threeStar} | 2 Stelle={currentData.twoStar} | 1 Stella={currentData.uneStar}");
 
@@ -37,6 +40,11 @@ public class Player : MonoBehaviour
                     currentData.twoStar,
                     currentData.threeStar
                 );
+            }
+
+            if (currentLevelName == "10")
+            {
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }

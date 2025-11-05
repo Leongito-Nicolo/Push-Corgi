@@ -23,6 +23,8 @@ public class LevelLoader : MonoBehaviour
 
     public GameObject uneStarsImage;
 
+    public static event Action<LevelData> OnLevelDataLoaded;
+
 
 
 
@@ -107,6 +109,8 @@ public class LevelLoader : MonoBehaviour
             int col = _levelGlobalContainer.col;
 
             LevelGenerator.Instance.LevelGenerate(selectedLevel, line, col);
+
+            OnLevelDataLoaded?.Invoke(selectedLevel);
         }
         else
         {
