@@ -10,7 +10,7 @@ public class MainMenuUI : MonoBehaviour
     public RectTransform currentParent;
 
     public GameObject levelsPanelToClose;
-
+    
     public TMP_Text minMovesText;
 
     void Awake()
@@ -20,7 +20,7 @@ public class MainMenuUI : MonoBehaviour
 
     void Start()
     {
-        //LevelLoader.OnLevelsReady += OnLevelsReadyToGenerate;
+        LevelLoader.OnLevelDataLoaded += MinMoveOnDisplay;
 
         if (GameManager.Instance == null || LevelLoader.Instance == null)
         {
@@ -52,6 +52,27 @@ public class MainMenuUI : MonoBehaviour
     {
         LevelLoader.OnLevelsReady -= OnLevelsReadyToGenerate;
     }
+
+    public void MinMoveOnDisplay(LevelData data)
+{
+    // Questo metodo è chiamato automaticamente dall'evento OnLevelDataLoaded, 
+    // e riceve l'oggetto LevelData come parametro 'data'.
+
+    if (minMovesText != null)
+    {
+        // 1. Accede al campo MinMoveCounter (che è una stringa nel tuo JSON)
+        minMovesText.text = data.MinMoveCounter;
+
+        // Se volessi aggiungere un'etichetta:
+        // minMovesText.text = $"Min: {data.MinMoveCounter}";
+
+        Debug.Log($"[MainMenuUI] Mosse minime aggiornate a: {data.MinMoveCounter}");
+    }
+    else
+    {
+        Debug.LogWarning("minMovesText non è assegnato nell'Inspector di MainMenuUI. Impossibile visualizzare le mosse minime.");
+    }
+}
 
 
     private void GenerateLevelButtons(LevelData[] levels)

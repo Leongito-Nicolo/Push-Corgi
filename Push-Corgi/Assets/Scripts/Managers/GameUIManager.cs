@@ -10,7 +10,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _movesText;
     [SerializeField] private TMP_Text _gameMovesText;
     [SerializeField] private TMP_Text _levelName;
-    public TMP_Text minMovesText;
+    //public TMP_Text minMovesText;
 
     public Button button;
     private void Awake()
@@ -31,7 +31,7 @@ public class GameUIManager : MonoBehaviour
         _movesText.text = $"{GameManager.Instance.movesCounter}";
     }
 
-    public void MinMoveOnDisplay(LevelData data)
+    /*public void MinMoveOnDisplay(LevelData data)
     {
         if (minMovesText != null)
         {
@@ -41,7 +41,7 @@ public class GameUIManager : MonoBehaviour
         {
             Debug.LogWarning("TextMeshProUGUI per le mosse minime non è assegnato.");
         }
-    }
+    }*/
 
 
     public void UpdateMoves()
