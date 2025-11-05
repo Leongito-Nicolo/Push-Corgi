@@ -46,6 +46,9 @@ public class GameUIManager : MonoBehaviour
         }
         LevelLoader.Instance.LoadNextLevel();
         GameManager.Instance.movesCounter = 0;
+        LevelLoader.Instance.threeStarsImage.SetActive(false);
+        LevelLoader.Instance.twoStarsImage.SetActive(false);
+        LevelLoader.Instance.uneStarsImage.SetActive(false);
     }
 
     public void OnPreviousLevelButtonClicked()
@@ -57,6 +60,9 @@ public class GameUIManager : MonoBehaviour
         }
         LevelLoader.Instance.LoadPreviousLevel();
         GameManager.Instance.movesCounter = 0;
+        LevelLoader.Instance.threeStarsImage.SetActive(false);
+        LevelLoader.Instance.twoStarsImage.SetActive(false);
+        LevelLoader.Instance.uneStarsImage.SetActive(false);
     }
 
     public void CloseWinPannel()
@@ -86,6 +92,9 @@ public class GameUIManager : MonoBehaviour
             Debug.LogWarning("Nessun livello è stato caricato in precedenza. Impossibile riavviare.");
         }
         GameManager.Instance.movesCounter = 0;
+        LevelLoader.Instance.threeStarsImage.SetActive(false);
+        LevelLoader.Instance.twoStarsImage.SetActive(false);
+        LevelLoader.Instance.uneStarsImage.SetActive(false);
         //_winPanel.SetActive(false);
     }
 
@@ -116,6 +125,5 @@ public class GameUIManager : MonoBehaviour
     {
         GameManager.Instance.isPaused = !GameManager.Instance.isPaused;
     }
-
 
 }
