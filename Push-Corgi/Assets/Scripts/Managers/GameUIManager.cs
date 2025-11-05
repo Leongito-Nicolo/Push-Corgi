@@ -38,6 +38,7 @@ public class GameUIManager : MonoBehaviour
 
     public void OnNextLevelButtonClicked()
     {
+        GameManager.Instance.hasWon = false;
         _winPanel.SetActive(false);
         if (LevelLoader.Instance == null)
         {
@@ -58,8 +59,15 @@ public class GameUIManager : MonoBehaviour
         LevelLoader.Instance.LoadPreviousLevel();
     }
 
+    public void CloseWinPannel()
+    {
+        _winPanel.SetActive(false);
+    }
+
     public void Restart()
     {
+        GameManager.Instance.hasWon = false;
+        //_winPanel.SetActive(false);
         if (LevelLoader.Instance == null)
         {
             Debug.LogError("Restart fallito: LevelLoader.Instance è NULL.");
@@ -77,7 +85,7 @@ public class GameUIManager : MonoBehaviour
         {
             Debug.LogWarning("Nessun livello è stato caricato in precedenza. Impossibile riavviare.");
         }
-        _winPanel.SetActive(false);
+        //_winPanel.SetActive(false);
     }
 
     public void LoadLevelByLoadedName()

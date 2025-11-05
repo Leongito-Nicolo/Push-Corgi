@@ -16,26 +16,40 @@ public class MainMenuUI : MonoBehaviour
         LevelLoader.OnLevelsReady += OnLevelsReadyToGenerate;
     }
 
-    public void OnLevelsReadyToGenerate()
+    void Start()
     {
-        LevelLoader.OnLevelsReady -= OnLevelsReadyToGenerate;
+        //LevelLoader.OnLevelsReady += OnLevelsReadyToGenerate;
 
         if (GameManager.Instance == null || LevelLoader.Instance == null)
         {
             Debug.LogError("GameManager o LevelLoader non inizializzati.");
             return;
         }
+    }
+
+    public void OnLevelsReadyToGenerate()
+    {
+
+
+        /*if (GameManager.Instance == null || LevelLoader.Instance == null)
+        {
+            Debug.LogError("GameManager o LevelLoader non inizializzati.");
+            return;
+        }*/
+        
+        LevelLoader.OnLevelsReady -= OnLevelsReadyToGenerate;
 
         LevelData[] levels = LevelLoader.Instance.AllLevels;
 
         if (levels != null && levels.Length > 0)
         {
-                GenerateLevelButtons(levels);
+            GenerateLevelButtons(levels);
         }
         else
         {
             Debug.LogError("Nessun dato sui livelli disponibile per la generazione dei pulsanti, nonostante l'evento di caricamento.");
         }
+        LevelLoader.OnLevelsReady -= OnLevelsReadyToGenerate;
     }
 
     void OnDestroy()
