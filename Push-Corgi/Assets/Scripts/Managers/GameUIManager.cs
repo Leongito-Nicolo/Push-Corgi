@@ -46,6 +46,7 @@ public class GameUIManager : MonoBehaviour
             return;
         }
         LevelLoader.Instance.LoadNextLevel();
+        GameManager.Instance.movesCounter = 0;
 
     }
 
@@ -57,6 +58,7 @@ public class GameUIManager : MonoBehaviour
             return;
         }
         LevelLoader.Instance.LoadPreviousLevel();
+        GameManager.Instance.movesCounter = 0;
     }
 
     public void CloseWinPannel()
@@ -85,6 +87,7 @@ public class GameUIManager : MonoBehaviour
         {
             Debug.LogWarning("Nessun livello è stato caricato in precedenza. Impossibile riavviare.");
         }
+        GameManager.Instance.movesCounter = 0;
         //_winPanel.SetActive(false);
     }
 

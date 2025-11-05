@@ -26,10 +26,6 @@ public class GameManager : MonoBehaviour
 
     public Stack<Move> moves = new();
 
-
-
-
-
     void Awake()
     {
         if (Instance == null)
