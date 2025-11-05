@@ -10,6 +10,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text _movesText;
     [SerializeField] private TMP_Text _gameMovesText;
 
+    [SerializeField] private TMP_Text _levelName;
+
     public Button button;
     private void Awake()
     {
@@ -76,6 +78,11 @@ public class GameUIManager : MonoBehaviour
             Debug.LogWarning("Nessun livello è stato caricato in precedenza. Impossibile riavviare.");
         }
         _winPanel.SetActive(false);
+    }
+
+    public void LoadLevelByLoadedName()
+    {
+        _levelName.text = $"{LevelLoader.Instance.CurrentLevelName}";
     }
 
     void OnDestroy()
