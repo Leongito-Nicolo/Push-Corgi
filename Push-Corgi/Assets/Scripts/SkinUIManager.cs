@@ -37,6 +37,5 @@ public class SkinUIManager : MonoBehaviour
         currentSkin = (skins.Count + currentSkin) % skins.Count;
         skinImage.sprite = skins[currentSkin];
         skinCounter.text = $"{currentSkin + 1}/{skins.Count}";
-        Debug.Log(currentSkin);
     }
 }
