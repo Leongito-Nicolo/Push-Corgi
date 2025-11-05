@@ -48,11 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   gameSource: {fileID: 4490301910331462649}
   backgroundSource: {fileID: 685614082952004031}
-  winSound: {fileID: 8300000, guid: 382da7b372bc14147a60cd541411ebed, type: 3}
-  menuButtonSound: {fileID: 8300000, guid: 7c2fcaa6c88a40f4c8f8634bd24714f1, type: 3}
-  startDragSound: {fileID: 8300000, guid: a1acd3f6fc6daa34596fd5e13df38fa5, type: 3}
-  rewindSound: {fileID: 8300000, guid: 6d430e1547d015548b8e315aa944fd67, type: 3}
-  mainTrack: {fileID: 8300000, guid: 4c55c66bb36c5ae4c8725ec33565c34b, type: 3}
+  winSound: {fileID: 8300000, guid: 90b6000524889b34ea4e8f72d7b89016, type: 3}
+  menuButtonSound: {fileID: 8300000, guid: 907714113299d31499052a8c4ab073d9, type: 3}
+  startDragSound: {fileID: 8300000, guid: af730c8aa87def844a9926293506abe7, type: 3}
+  rewindSound: {fileID: 8300000, guid: 4b5e94f32cdc30747b42c42129f0369e, type: 3}
+  mainTrack: {fileID: 8300000, guid: 08bbde89af822fa46a8c9e4ab07692c6, type: 3}
 --- !u!82 &4490301910331462649
 AudioSource:
   m_ObjectHideFlags: 0
