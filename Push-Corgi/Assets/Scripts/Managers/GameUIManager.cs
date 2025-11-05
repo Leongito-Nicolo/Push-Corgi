@@ -9,7 +9,6 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private TMP_Text _movesText;
     [SerializeField] private TMP_Text _gameMovesText;
-
     [SerializeField] private TMP_Text _levelName;
 
     public Button button;
@@ -47,7 +46,6 @@ public class GameUIManager : MonoBehaviour
         }
         LevelLoader.Instance.LoadNextLevel();
         GameManager.Instance.movesCounter = 0;
-
     }
 
     public void OnPreviousLevelButtonClicked()

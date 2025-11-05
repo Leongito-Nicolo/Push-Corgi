@@ -166,7 +166,7 @@ public class LevelGenerator : MonoBehaviour
         if (blockID == 3)
         {
             finalX -= 0.5f;
-            finalZ += 0.15f;
+            //finalZ += 0.15f;
         }
         
         

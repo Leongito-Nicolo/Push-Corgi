@@ -13,7 +13,7 @@ public class LevelLoader : MonoBehaviour
 
     public static LevelLoader Instance { get; private set; }
 
-    public string CurrentLevelName { get; set; }
+    public string CurrentLevelName;
 
     public static event Action OnLevelsReady;
 
