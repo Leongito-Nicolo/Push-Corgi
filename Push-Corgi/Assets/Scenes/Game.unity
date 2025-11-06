@@ -750,11 +750,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 572826495562055475, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 572826495562055475, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.11199254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 631084243345579602, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -942,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2502499618047224586, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_Padding.m_Top
-      value: 200
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 2502499618047224586, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_ChildAlignment
@@ -1070,11 +1070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3719418416853699225, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3719418416853699225, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_fontSizeBase
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4044752706618000917, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_fontSize
@@ -1498,7 +1498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8914960396467119089, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5079962
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9120495520091285783, guid: 7d656670c83fbc24ea4090af9b21ac4e, type: 3}
       propertyPath: m_AnchorMax.x
