@@ -55,16 +55,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void MinMoveOnDisplay(LevelData data)
 {
-    // Questo metodo è chiamato automaticamente dall'evento OnLevelDataLoaded, 
-    // e riceve l'oggetto LevelData come parametro 'data'.
 
     if (minMovesText != null)
     {
-        // 1. Accede al campo MinMoveCounter (che è una stringa nel tuo JSON)
         minMovesText.text = data.MinMoveCounter;
-
-        // Se volessi aggiungere un'etichetta:
-        // minMovesText.text = $"Min: {data.MinMoveCounter}";
 
         Debug.Log($"[MainMenuUI] Mosse minime aggiornate a: {data.MinMoveCounter}");
     }
